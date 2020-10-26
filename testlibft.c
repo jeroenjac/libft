@@ -6,7 +6,7 @@
 /*   By: jjacobs <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/26 14:03:06 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/10/26 17:47:16 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/10/26 20:00:25 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 //NEED TO DO: Include library, work with "ar"??
 int		ft_strlen(char *str);
 int		ft_strncmp(char *s1, char *s2, unsigned int n);
+void	*ft_memset(void *pt, int c, int len);
 
 int		main(void)
 {
@@ -64,6 +65,20 @@ int		main(void)
 	printf("strncmp(%s, %s, %i) = %d\n", str1, str0, len, strncmp(str1, str0, len));
 	printf("ft_strncmp(%s, %s, %i) = %d\n", str1, str0, len, ft_strncmp(str1, str0, len));
 	
+	//To test the memset function
+	char	str2[40] = "Hallo";
+	char	c;
+
+	c = 'q';
+	len = 2;
+	printf("\nTesting ft_memset..\n");
+	printf("Before memset, str: %s\n", str1);
+	memset(str1, c, len);
+	printf("After memset %i chars to %c, str: %s\n", len, c, str1);
+	printf("Before memset, str: %s\n", str2);
+	memset(str2, c, len);
+	printf("After memset %i chars to %c, str: %s\n", len, c, str2);
+
 	//printf("Testing ft_strlcpy...\n");
 	//printf("Test 1: ft_strlcpy(%s) = %d\n", str1, ft_strlcpy(str1));
 	//printf("Test 2: ft_strlcpy(\"\") = %d\n", ft_strlcpy(""));
