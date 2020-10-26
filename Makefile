@@ -6,22 +6,26 @@
 #    By: jjacobs <marvin@codam.nl>                    +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/26 13:41:18 by jjacobs       #+#    #+#                  #
-#    Updated: 2020/10/26 14:13:38 by jjacobs       ########   odam.nl          #
+#    Updated: 2020/10/26 16:29:52 by jjacobs       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = part1.c
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-RM = rm -f
+SRC = ./part1.c \
 
-all: part1.c
-	$(CC) $(CFLAGS) $(NAME) -o libft.a
+OBJ = $(SRC:.c=.o)
+
+CFLAGS = -Wall -Wextra -Werror
+NAME = part1.a
+
+$(NAME): 	$(OBJ)
+			gcc -o $(NAME) $(OBJ)
+
+all:		$(NAME)
 
 clean:
-	$(RM) *.o
+	rm -f $(OBJ)
 
+fclean:	clean
+		rm -f $(NAME)
 
-
-fclean: clean
-	$(RM) *.o
+re:		fclean all
