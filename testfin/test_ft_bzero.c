@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   test_ft_memset.c                                   :+:      :+:    :+:   */
+/*   test_ft_bzero.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jjacobs <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/10/26 18:40:05 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/02 17:36:23 by jjacobs       ########   odam.nl         */
+/*   Created: 2020/11/02 17:43:08 by jjacobs       #+#    #+#                 */
+/*   Updated: 2020/11/02 17:43:38 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,30 +18,20 @@
 int		main(void)
 {
 	//Normal tests
-	char	str10[60] = "yesyes";
-	char	str20[60] = "yesyes";
-	int		c;
+	char	str10[6] = "yesyes";
+	char	str20[6] = "yesyes";
 	size_t	len;
-	char	nulchar[1] = "0";
 	
-	printf("What is sizeof(char)? It is %lu\n", sizeof(char));
-	printf("What is sizeof(int)? It is %lu\n", sizeof(int));
-	printf("What is sizeof(NULL)? It is %lu\n", sizeof(NULL));
-	printf("What is sizeof('0')? It is %lu\n", sizeof('0'));
-	printf("What is sizeof(\"0\")? It is %lu\n", sizeof("0"));
-	printf("What is sizeof(char with value 0 / not terminated?)? It is %lu\n", sizeof(nulchar));
-	printf("What is sizeof(\\0)? It is %lu\n", sizeof("\0"));
-
-	c = 'k' - 256;
-	len = 50;
+	len = 4;
 
 	printf("Before memset(): %s\n", str10);
-	memset(str10, c, len);
+	bzero(str10, len);
 	printf("After memset(): %s\n", str10);
 	printf("Before ft_memset(): %s\n", str20);
-	ft_memset(str20, c, len);
-	printf("After ft_memset(): %s\n (shows more random stuff, since terminating 0 is replaced by char)\n", str20);
-	
+	ft_bzero(str20, len);
+	printf("After ft_memset(): %s\n", str20);
+
+/*
 	//Special case where last char of string is set to not \0,
 	char	str1[6] = "hallo";
 	char	str2[6] = "hallo";
@@ -50,10 +40,10 @@ int		main(void)
 	len = 1;
 
 	printf("Before memset(): %s\n", str1);
-	memset(str1 + 5, c, len);
+	memset(str1 + 5, len);
 	printf("After memset(): %s\n", str1);
 	printf("Before ft_memset(): %s\n", str2);
-	ft_memset(str2 + 5, c, len);
+	ft_memset(str2 + 5, len);
 	printf("After ft_memset(): %s\n (shows more random stuff, since terminating 0 is replaced by char)\n", str2);
 	
 	//Testing with cycling the possible char values
@@ -64,26 +54,34 @@ int		main(void)
 	c = ('j' - 257 - 1000) % 256;
 
 	printf("Before memset(): %s\n", str3);
-	memset(str3, c, len);
+	memset(str3, len);
 	printf("After memset(): %s\n", str3);
 	printf("Before ft_memset(): %s\n", str4);
-	ft_memset(str4, c, len);
+	ft_memset(str4, len);
 	printf("After ft_memset(): %s\n", str4);
-	
+*/	
 	//Testing with arrays of ints
 	int		arr1[10];
 	int		arr2[10];
+	int		i;
 
-	len = 2*sizeof(int);
-	c = -1;
+	i = -1;
+	while (i++ < 9)
+	{
+		arr1[i] = i + 1;
+		arr2[i] = arr1[i];
+		//printf("i = %i\n", i);
+	}
+
+	len = 4*sizeof(int);
 	
 	printf("Before memset(), arr[3]: %d\n", arr1[3]);
-	memset(arr1, c, len);
+	bzero(arr1, len);
 	printf("After memset(), arr[3]: %d\n", arr1[3]);
 	printf("Before ft_memset(), arr[3]: %d\n", arr2[3]);
-	ft_memset(arr2, c, len);
+	ft_bzero(arr2, len);
 	printf("After ft_memset(), arr[3]: %d\n", arr2[3]);
-	
-	printf("%c%c%c\n", 226, 152, 131);
-    return 0;
+	   
+	return 0;
 }
+
