@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   test_ft_strncmp.c                                  :+:      :+:    :+:   */
+/*   test_ft_strncmp.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jjacobs <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/10/26 14:03:06 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/10/28 22:38:33 by jjacobs          ###   ########.fr       */
+/*   Created: 2020/11/02 17:55:48 by jjacobs       #+#    #+#                 */
+/*   Updated: 2020/11/02 18:13:52 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,10 @@
 
 #include "../libft.h"
 
-//NEED TO DO: Include library, work with "ar"??
-size_t	ft_strlen(const char *str);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-void	*ft_memset(void *pt, int c, int len);
-
 int		main(void)
 {
 	char	str1[40] = "Hallo";
+	char	str1b[40] = "oHallo";
 	char	str0[10] = "";
 	char	str99[1000] = "Hallo and very very long";
 
@@ -47,8 +43,8 @@ int		main(void)
 	write(1, "\n", 1);
 	len = 0;
 	printf("Test 2: normal, compare %i chars (zero)\n", len);
-	printf("strncmp(%s, %s, %i) = %d\n", str1, str99, len, strncmp(str1, str99, len));
-	printf("ft_strncmp(%s, %s, %i) = %d\n", str1, str99, len, ft_strncmp(str1, str99, len));
+	printf("strncmp(%s, %s, %i) = %d\n", str1b, str99, len, strncmp(str1b, str99, len));
+	printf("ft_strncmp(%s, %s, %i) = %d\n", str1b, str99, len, ft_strncmp(str1b, str99, len));
 	
 	write(1, "\n", 1);
 	len = 2;

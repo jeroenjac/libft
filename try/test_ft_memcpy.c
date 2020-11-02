@@ -1,27 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strncmp.c                                       :+:    :+:            */
+/*   test_ft_memcpy.c                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jjacobs <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/02 17:53:17 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/02 17:53:48 by jjacobs       ########   odam.nl         */
+/*   Created: 2020/11/02 17:51:05 by jjacobs       #+#    #+#                 */
+/*   Updated: 2020/11/02 17:54:39 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
 
-int		ft_strncmp(const char *s1, const char *s2, size_t n)
-{
-	while ((*s1 != '\0' || *s2 != '\0') && n-- > 0)
-	{
-		if (*s1 != *s2)
-			return (*s1 - *s2);
-		if (*s1 != '\0')
-			s1++;
-		if (*s2 != '\0')
-			s2++;
-	}
-	return (0);
-}
