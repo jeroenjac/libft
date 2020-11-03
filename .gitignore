@@ -2,3 +2,6 @@
 *.o
 *.a
 *.out
+
+#swap files if doc is open
+*.swp
