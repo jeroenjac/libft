@@ -1,3 +1,4 @@
 # outputs
 *.o
 *.a
+*.out
