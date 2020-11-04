@@ -6,7 +6,7 @@
 #    By: jjacobs <jjacobs@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/03 11:48:52 by jjacobs       #+#    #+#                  #
-#    Updated: 2020/11/03 20:15:39 by jjacobs       ########   odam.nl          #
+#    Updated: 2020/11/04 19:34:03 by jjacobs       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ SRC = ./ft_strlen.c \
 	  ./ft_memset.c \
 	  ./ft_bzero.c \
 	  ./ft_memcpy.c \
+	  ./ft_memccpy.c \
 
 OBJ = $(SRC:.c=.o)
 
