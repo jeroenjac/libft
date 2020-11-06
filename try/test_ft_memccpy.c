@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/04 19:24:46 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/04 20:00:17 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/06 14:36:51 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,71 +63,107 @@ int		main(int argc, char **argv)
 	printf("%s, %s\n", dstneg, srcneg);
 */
 	
-	//Test 1: Normal test with n bytes.
-	//Return pointer can not be tested.
-	char	src1[] = "Starrrr";
-	char	dst1[] = "Lukeeee";
-	n = 5;
-	c = 'a';
-	printf("%s, %s\n", dst1, src1);
-	if (ft == 1)
-		ft_memccpy(dst1, src1, c, n);
-	else
-		memccpy(dst1, src1, c, n);
-	printf("%s, %s\n", dst1, src1);
-
-	//Test 2
-	char	*sp2;
-	char	dp2[40];
-	strcpy(sp2, "AABBCC");
-	strcpy(dp2, "lololo");
-	n = 3;
+	//Test 1a: Normal test with n bytes. Printing dst and return ptr.
+	//c is not found in first n bytes of dst.
+	char	src1[15] = "CodamAmsterdam";
+	char	dst1[15] = "BroodGroningen";
+	char	*pr1;
+	n = 4;
 	c = 'A';
-	puts(dp2);
-	puts(sp2);
-	//printf("%s, %s\n", dp2, *sp2);
+	printf("%s, %s. n = %zu, c = %c.\n", dst1, src1, n, c);
 	if (ft == 1)
-		sp2 = ft_memccpy(dp2, *sp2, c, n);
+		pr1 = ft_memccpy(dst1, src1, c, n);
 	else
-		sp2 = memccpy(dp2, sp2, c, n);
-	printf("%s, %s\n", dp2, sp2);	
-/*
-	//Test 3: Arrays for sp3/dp3 are reserved and R/W.
+		pr1 = memccpy(dst1, src1, c, n);
+	printf("dst_new: %s\n", dst1);
+	printf("ptr_return: %s\n", pr1);
+	
+	//Test 1b: c is found in first n bytes of dst.
+	char	dst1b[15] = "BroodGroningen";
+	n = 8;
+	c = 'A';
+	printf("%s, %s. n = %zu, c = %c.\n", dst1, src1, n, c);
+	if (ft == 1)
+		pr1 = ft_memccpy(dst1b, src1, c, n);
+	else
+		pr1 = memccpy(dst1b, src1, c, n);
+	printf("dst_new: %s\n", dst1);
+	printf("ptr_return: %s\n", pr1);
+	
+	//Test 1b: c is not found in dst.
+	char	dst1c[15] = "BroodGroningen";
+	n = 8;
+	c = 'Q';
+	printf("%s, %s. n = %zu, c = %c.\n", dst1, src1, n, c);
+	if (ft == 1)
+		pr1 = ft_memccpy(dst1c, src1, c, n);
+	else
+		pr1 = memccpy(dst1c, src1, c, n);
+	printf("dst_new: %s\n", dst1);
+	printf("ptr_return: %s\n", pr1);
+	
+	//Test 2: altmethod of setting src and dsti. byte n == c.
+	char	dst2[40];
+	char	src2[40];
+	char	*pr2;
+	strcpy(dst2, "AABBCC");
+	strcpy(src2, "loocoo");
+	n = 4;
+	c = 'c';
+	puts(dst2);
+	puts(src2);
+	if (ft == 1)
+		pr2 = ft_memccpy(dst2, src2, c, n);
+	else
+		pr2 = memccpy(dst2, src2, c, n);
+	puts(dst2);
+	printf("ptr_return: %s\n", pr2);
+	
+	//Test 2b: altmethod of setting src and dst. byte n == last byte of dst == c.
+	char	dst2b[7];
+	char	src2b[7];
+	char	*pr2b;
+	strcpy(dst2b, "AABBCC");
+	strcpy(src2b, "loocor");
+	n = 6;
+	c = 'r';
+	puts(dst2b);
+	puts(src2b);
+	if (ft == 1)
+		pr2b = ft_memccpy(dst2b, src2b, c, n);
+	else
+		pr2b = memccpy(dst2b, src2b, c, n);
+	puts(dst2b);
+	printf("ptr_return: %s\n", pr2b);
+
+	//Test 3: alt method of setting src and dst
+	//(Arrays for sp3/dp3 are reserved and R/W)
 	char	sp3[] = "ReadWrite";
 	char	dp3[] = "Correction";
-	printf("%s, %s\n", dp3, sp3);
+	char	*pr3;
+	n = 7;
+	c = 'e';
+	printf("%s, %s. n = %zu, c = %c.\n", dp3, sp3, n, c);
 	if (ft == 1)
-		ft_memccpy(dp3, sp3, 2);
+		pr3 = ft_memccpy(dp3, sp3, c, n);
 	else
-		memccpy(dp3, sp3, 2);
-	printf("%s, %s\n", dp3, sp3);
-
-	//Test 4: bus error for libc and libft. Exit.
-	char	*sp4 = "Readonly";
-	char	*dp4 = "Dist";
-	printf("%s, %s\n", dp4, sp4);
-	if (ft == 1)
-		ft_memccpy(dp4, sp4, 2);
-	else
-		memccpy(dp4, sp4, 2);
-	printf("%s, %s\n", dp4, sp4);
-
-
+		pr3 = memccpy(dp3, sp3, c, n);
+	printf("dst:%s, return pointer:%s\n", dp3, pr3);
+	
 	//Test 5: src = NULL (var). Libc function gives seg fault.
-	char	src5[10];
+	//char	src5[10];
 	char	*src5p = NULL;
 	char	dst5[10] = "Lala";
-	char	*pt5;
-	pt5 = src5;
-	makenull(&pt5);
+	n = 0;
+	c = 'q';
 	printf("%s, %s\n", dst5, src5p);
 	if (ft == 1)
-		ft_memccpy(dst5, src5p, 2);
+		ft_memccpy(dst5, src5p, n, c);
 	else
-		memccpy(dst5, src5p, 2);
+		memccpy(dst5, src5p, n, c);
 	printf("%s, %s\n", dst5, src5p);
 
-
+/*
 	//Test 5b: dst = NULL (direct). Libc functions gives seg fault. Libft proceeds.
 	char	dst5b[10] = "oneone";
 	printf("%s, %s\n", dst5b, NULL);
