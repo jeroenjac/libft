@@ -5,3 +5,7 @@
 
 #swap files if doc is open
 *.swp
+
+#output files of test scripts
+*/libc
+*/libft

@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/04 19:24:46 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/06 14:36:51 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/06 16:47:50 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,18 @@ int		main(int argc, char **argv)
 	else
 		memccpy(dst0, src0, c, n);
 	printf("%s, %s\n", dst0, src0);
+	
+	//Test 0b: Test with c = 0 / '\0' / NULL..
+	char	src0b[10] = "bZero";
+	char	dst0b[10] = "bFull";
+	c = 0;
+	n = 2;
+	printf("%s, %s\n", dst0b, src0b);
+	if (ft == 1)
+		ft_memccpy(dst0b, src0b, c, n);
+	else
+		memccpy(dst0b, src0b, c, n);
+	printf("%s, %s\n", dst0b, src0b);
 /*
 	//Test -1: Test with n = -1; libc abort, libfr segfault; n (size_t) positive..
 	char	srcneg[10] = "Yes";
@@ -68,7 +80,7 @@ int		main(int argc, char **argv)
 	char	src1[15] = "CodamAmsterdam";
 	char	dst1[15] = "BroodGroningen";
 	char	*pr1;
-	n = 4;
+	n = 12;
 	c = 'A';
 	printf("%s, %s. n = %zu, c = %c.\n", dst1, src1, n, c);
 	if (ft == 1)
@@ -102,7 +114,7 @@ int		main(int argc, char **argv)
 	printf("dst_new: %s\n", dst1);
 	printf("ptr_return: %s\n", pr1);
 	
-	//Test 2: altmethod of setting src and dsti. byte n == c.
+	//Test 2: altmethod of setting src and dst. byte n == c.
 	char	dst2[40];
 	char	src2[40];
 	char	*pr2;
@@ -149,67 +161,82 @@ int		main(int argc, char **argv)
 	else
 		pr3 = memccpy(dp3, sp3, c, n);
 	printf("dst:%s, return pointer:%s\n", dp3, pr3);
-	
-	//Test 5: src = NULL (var). Libc function gives seg fault.
-	//char	src5[10];
+
+/*
+	//Test 5: src = NULL (var). 
+	//Libc function gives seg fault. Libft also.
 	char	*src5p = NULL;
 	char	dst5[10] = "Lala";
-	n = 0;
+	n = 3;
 	c = 'q';
 	printf("%s, %s\n", dst5, src5p);
 	if (ft == 1)
-		ft_memccpy(dst5, src5p, n, c);
+		ft_memccpy(dst5, src5p, c, n);
 	else
-		memccpy(dst5, src5p, n, c);
+		memccpy(dst5, src5p, c, n);
 	printf("%s, %s\n", dst5, src5p);
-
+*/
 /*
-	//Test 5b: dst = NULL (direct). Libc functions gives seg fault. Libft proceeds.
+	//Test 5b: dst = NULL (direct)
+	//Libc functions gives seg fault. Libft also.
 	char	dst5b[10] = "oneone";
+	n = 2;
+	c = 'q';
 	printf("%s, %s\n", dst5b, NULL);
 	if (ft == 1)
-		ft_memccpy(dst5b, NULL, 2);
+		ft_memccpy(dst5b, NULL, c, n);
 	else
-		memccpy(dst5b, NULL, 2);
+		memccpy(dst5b, NULL, c, n);
 	printf("%s, %s\n", dst5b, NULL);
-
+*/
 
 	//Test 5c: works ok for libc and libft if (n <= nbytes + 1);
-	char dss[] = "ABC";
+	char dst5c[] = "ABCDEF";
+	n = 4;
+	c = '2';
 	if (ft == 1)
-		printf("New random test: %s\n", ft_memccpy(dss, "123", 2));
+		printf("New random test: %s\n", ft_memccpy(dst5c, "123456", c, n));
 	else
-		printf("New random test: %s\n", memccpy(dss, "123", 2));
+		printf("New random test: %s\n", memccpy(dst5c, "123456", c, n));
 
-
-	//Test 6: dst = NULL (var). Libc functions gives seg fault. Libft proceeds.
-	char	src6[10] = "Moon";
+/*
+	//Test 6: dst = NULL (var).
+	//Libc functions gives seg fault. Libft also..
+	char	src6[10] = "Moona";
 	char	*dst6 = NULL;
+	n = 4;
+	c = 'o';
 	printf("%s, %s\n", dst6, src6);
 	if (ft == 1)
-		ft_memccpy(dst6, src6, 2);
+		ft_memccpy(dst6, src6, c, n);
 	else
-		memccpy(dst6, src6, 2);
+		memccpy(dst6, src6, c, n);
 	printf("%s, %s\n", dst6, src6);
-
-
-	//Test 6b: dst = NULL (direct). Libc functions gives seg fault. Libft proceeds.
+*/
+/*
+	//Test 6b: dst = NULL (direct).
+	//Libc functions gives seg fault. Libft proceeds.
 	char	src6b[10] = "nulnul";
+	n = 4;
+	c = 'u';
 	printf("%s, %s\n", NULL, src6b);
 	if (ft == 1)
-		ft_memccpy(NULL, src6b, 2);
+		ft_memccpy(NULL, src6b, c, n);
 	else
-		memccpy(NULL, src6b, 2);
+		memccpy(NULL, src6b, c, n);
 	printf("%s, %s\n", NULL, src6b);
-
-
-	//Test 6c: does not work for libft or libc. src is not R/W. 
-	char sss[] = "DEF";
+*/
+/*
+	//Test 6c: does not work for libft or libc. dst is not R/W. 
+	char src6c[] = "DEF";
+	n = 3;
+	c = 'F';
+	printf("Start 6c\n");
 	if (ft == 1)
-		printf("New random test2: %s\n", ft_memccpy("456", sss, 2));
+		printf("New random test2: %s\n", ft_memccpy("456", src6c, c, n));
 	else
-		printf("New random test2: %s\n", memccpy("456", sss, 2));
-	
+		printf("New random test2: %s\n", memccpy("456", src6c, c, n));
+*/	
 	
 	//Test 7a: Test for int. Libc and Libft same.
 	//For n >> int size (4), no compile error is given (as with char).
@@ -218,6 +245,7 @@ int		main(int argc, char **argv)
 	int		nums7 = 4;		// 0000-0100
 	int		*npd;
 	int		*nps;
+	c = 11;
 	n = 1; //For now to be safe = 1. 
 	printf("Int size = %zu\n", sizeof(int));
 	npd = &numd7;
@@ -239,7 +267,8 @@ int		main(int argc, char **argv)
 
 	npd = &numd7b;
 	nps = &nums7b;
-	n = 2;
+	c = '4';
+	n = 1;
 	printf("%i, %i\n", *npd, *nps);
 	if (ft == 1)
 		ft_memccpy(npd, nps, c, n);
@@ -247,7 +276,6 @@ int		main(int argc, char **argv)
 		memccpy(npd, nps, c, n);
 	printf("%i, %i\n", *npd, *nps);	
 
-	
 	//Test 7c: Test for int arrays. Libc and Libft same.
 	//Byte wise behavior? To see sth changing in 2nd int n > 4
 	int		numsrc7[5] = {234, 345, 456, 567, 678};
@@ -268,6 +296,6 @@ int		main(int argc, char **argv)
 	printf("\n");
 	
 	//Test X: other data types?
-*/	
+
 	return (0);
 }

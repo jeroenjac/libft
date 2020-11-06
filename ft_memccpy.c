@@ -6,21 +6,19 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/04 19:03:13 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/06 14:38:06 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/06 16:41:21 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-void	*ft_memccpy(void *dst, void *src, int c, size_t n)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
 	unsigned char *d;
 	unsigned char *s;
 
-	if (dst == NULL)
-		return (NULL);
 	d = dst;
-	s = src;
+	s = (unsigned char*)src;
 	while (n > 0)
 	{
 		*d = *s;
