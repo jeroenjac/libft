@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 12:52:58 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/09 13:19:11 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/09 17:49:34 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int		main(int argc, char **argv)
     else
         printf("TESTING LIBC FUNCTION\n");
 	
-
-	//Test 0: c in src, and within n)
+	//Happy flow (e.g. correct input)
+	//Test 0: c in src, and within n bytes
 	char	src0[] = "Codam";
 	n = 4;
 	c = 'd';
@@ -48,16 +48,16 @@ int		main(int argc, char **argv)
 	else
 		printf("%s\n", memchr(src0, c, n));
 	
-	//Test 1: Simple (c in src, and not within n)
-	char	src1[] = "Codam";
-	n = 2;
-	c = 'd';
+	//Test 1: c in src, not within n bytes
+	char	src1[] = "Amsterdam";
+	n = 3;
+	c = 'r';
 	if (ft == 1)
 		printf("%s\n", ft_memchr(src1, c, n));
 	else
 		printf("%s\n", memchr(src1, c, n));
 	
-	//Test 2: Simple (c not in src)
+	//Test 2: c not in src
 	char	src2[] = "Codam";
 	n = 4;
 	c = 'q';
@@ -65,4 +65,73 @@ int		main(int argc, char **argv)
 		printf("%s\n", ft_memchr(src2, c, n));
 	else
 		printf("%s\n", memchr(src2, c, n));
+	
+	//Test 3: c not in src, n larger than src.
+	char src3[] = "Codam";
+	n = 10;
+	c = 'q';
+	if (ft == 1)
+		printf("%s\n", ft_memchr(src3, c, n));
+	else
+		printf("%s\n", memchr(src3, c, n));
+	
+	//Test 4: c in src, multiple times, n larger than src.
+	char src4[] = "Codinging";
+	n = 40;
+	c = 'i';
+	if (ft == 1)
+		printf("%s\n", ft_memchr(src4, c, n));
+	else
+		printf("%s\n", memchr(src4, c, n));	
+	
+	//Non happy flows
+	//Test 5: negative n.
+	char src5[] = "Codamam";
+	n = (-6); //This still works; Likely n will cycle to a positive value?
+	c = 'a';
+	if (ft == 1)
+		printf("%s\n", ft_memchr(src5, c, n));
+	else
+		printf("%s\n", memchr(src5, c, n));	
+
+/*
+	//Test 6: n is NULL / "b" >> compile errors.
+	char src6[] = "Lala6";
+	n = NULL;
+	c = 'a';
+	if (ft == 1)
+		printf("%s\n", ft_memchr(src6, c, n));
+	else
+		printf("%s\n", memchr(src6, c, n));	
+*/
+/*
+	//Test 7: use NULL as function input >> seg fault
+	//char src7 = NULL;
+	n = 10;
+	c = 'n';
+	if (ft == 1)
+		printf("%s\n", ft_memchr(NULL, c, n));
+	else
+		printf("%s\n", memchr(NULL, c, n));	
+*/
+/*
+	//Test 8: trying with NULL as c..
+	char src8[] = "Codinging";
+	n = 40;
+	//c = NULL;
+	if (ft == 1)
+		printf("%s\n", ft_memchr(src8, NULL, n));
+	else
+		printf("%s\n", memchr(src8, NULL, n));	
+*/
+/*
+	//Test 9: trying with NULL as n. >> compile error (test script), direct and via var.
+	char src9[] = "Codinging";
+	//n = NULL;
+	c = 'd';
+	if (ft == 1)
+		printf("%s\n", ft_memchr(src9, c, NULL));
+	else
+		printf("%s\n", memchr(src9, c, NULL));	
+*/
 }

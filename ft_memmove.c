@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_memccpy.c                                       :+:    :+:            */
+/*   ft_memmove.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
+/*   By: jjacobs <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/04 19:03:13 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/09 20:24:00 by jjacobs       ########   odam.nl         */
+/*   Created: 2020/11/09 17:52:01 by jjacobs       #+#    #+#                 */
+/*   Updated: 2020/11/09 21:34:54 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char *d;
-	unsigned char *s;
+	unsigned char	*d;
+	unsigned char	*s;
+	unsigned char	tmp[len];
+	unsigned int	i;
 
-	d = dst;
+	d = (unsigned char*)dst;
 	s = (unsigned char*)src;
-	while (n > 0)
+	i = 0;
+	while (i < len)
 	{
-		*d = *s;
-		if (*s == (char)c)
-			return (d + 1);
-		n--;
-		d++;
-		s++;
+		tmp[i] = s[i];
+		i++;
 	}
-	return (NULL);
+	while (len > 0)
+	{
+		d[len - 1] = tmp[len - 1];
+		len--;
+	}
+	return (dst);
 }

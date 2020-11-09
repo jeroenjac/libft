@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/04 19:24:46 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/06 16:47:50 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/09 20:14:28 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -268,7 +268,7 @@ int		main(int argc, char **argv)
 	npd = &numd7b;
 	nps = &nums7b;
 	c = '4';
-	n = 1;
+	n = 2;
 	printf("%i, %i\n", *npd, *nps);
 	if (ft == 1)
 		ft_memccpy(npd, nps, c, n);

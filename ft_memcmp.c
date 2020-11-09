@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_memccpy.c                                       :+:    :+:            */
+/*   ft_memcmp.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
+/*   By: jjacobs <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/04 19:03:13 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/09 20:24:00 by jjacobs       ########   odam.nl         */
+/*   Created: 2020/11/09 22:22:24 by jjacobs       #+#    #+#                 */
+/*   Updated: 2020/11/09 22:22:40 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+int		ft_memcmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned char *d;
-	unsigned char *s;
-
-	d = dst;
-	s = (unsigned char*)src;
-	while (n > 0)
+	while ((*s1 != '\0' || *s2 != '\0') && n-- > 0)
 	{
-		*d = *s;
-		if (*s == (char)c)
-			return (d + 1);
-		n--;
-		d++;
-		s++;
+		if (*s1 != *s2)
+			return (*s1 - *s2);
+		if (*s1 != '\0')
+			s1++;
+		if (*s2 != '\0')
+			s2++;
 	}
-	return (NULL);
+	return (0);
 }
