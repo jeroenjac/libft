@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_memccpy.c                                       :+:    :+:            */
+/*   ft_strlcpy.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/04 19:03:13 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/10 10:20:29 by jjacobs       ########   odam.nl         */
+/*   Created: 2020/11/10 15:05:59 by jjacobs       #+#    #+#                 */
+/*   Updated: 2020/11/10 17:34:27 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
+#include "libft.h"
 
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+size_t	ft_strlcpy(char *dst, const char *src, size_t ldst)
 {
-	unsigned char *d;
-	unsigned char *s;
+	size_t	i;
+	size_t	lens;
 
-	d = dst;
-	s = (unsigned char*)src;
-	while (n > 0)
+	lens = ft_strlen(src);
+	i = 0;
+	while (i + 1 < ldst && i < lens)
 	{
-		*d = *s;
-		if (*s == (char)c)
-			return (d + 1);
-		n--;
-		d++;
-		s++;
+		*dst = *src;
+		i++;
+		dst++;
+		src++;
 	}
-	return (NULL);
+	if (ldst > 0)
+		*dst = '\0';
+	return (lens);
 }

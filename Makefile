@@ -6,7 +6,7 @@
 #    By: jjacobs <jjacobs@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/03 11:48:52 by jjacobs       #+#    #+#                  #
-#    Updated: 2020/11/09 22:23:55 by jjacobs       ########   odam.nl          #
+#    Updated: 2020/11/10 18:32:48 by jjacobs       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,17 +19,20 @@ SRC = ./ft_strlen.c \
 	  ./ft_memchr.c \
 	  ./ft_memmove.c \
 	  ./ft_memcmp.c \
+	  ./ft_strlcpy.c \
+	  ./ft_strlcat.c \
 
 OBJ = $(SRC:.c=.o)
+BUILDDIR = obj
 
 CFLAGS = -Wall -Wextra -Werror
 NAME = libft.a
 
+all:	$(NAME)
+
 $(NAME): $(SRC)
 	gcc $(CFLAGS) -c $(SRC)
 	ar -vq $(NAME) $(OBJ)
-
-all:	$(NAME)
 
 clean:
 	rm -f $(OBJ)
@@ -38,3 +41,5 @@ fclean:	clean
 	rm -f $(NAME)
 
 re:		fclean all
+
+.PHONY: clean all
