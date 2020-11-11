@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/10 18:35:15 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/10 18:36:02 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/11 17:12:59 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,12 @@ int		main(int argc, char **argv)
     else
         printf("TESTING LIBC FUNCTION\n");
 	
-	//Test 0: Happy flow: normal input diff strings
-	char	dst0[30] = "codam in amsterdam";
-	char	src0[30] = "ABCDEFGHIJ";
-	len = 4;
+	//Test 0: Testing with normal dst & src
+	//Buffer large enough, len_total = 29 + \0
+	//Test different len = 0
+	char	src0[50] = "1234567890123456789"; // len = 19
+	char	dst0[50] = "0----ABCDE"; //len = 10
+	len = 0;
 	printf("%s\n", dst0);
 	printf("%s\n", src0);
 	if (ft == 1)
@@ -51,9 +53,11 @@ int		main(int argc, char **argv)
 	printf("%s\n", dst0);
 	printf("%zu\n", res);
 	
-	//Test 1: n = 0;
-	char	dst1[30] = "codam campus";
-	len = 0;
+	//Test 1: Testing with normal dst & src
+	//Buffer large enough, len_total = 29 + \0
+	//Test different len = 12 < lend.
+	char	dst1[50] = "1----ABCDE"; //len = 10
+	len = 10;
 	printf("%s\n", dst1);
 	printf("%s\n", src0);
 	if (ft == 1)
@@ -63,82 +67,101 @@ int		main(int argc, char **argv)
 	printf("%s\n", dst1);
 	printf("%zu\n", res);
 	
-	//Test 2: n > size of src
-	char	dst2[30] = "2 codam campus";
-	char	src2[30] = "nok";
-	len = 10;
+	//Test 2: Testing with normal dst & src
+	//Buffer large enough, len_total = 29 + \0
+	//Test different len = 12 > lend.
+	char	dst2[50] = "2----ABCDE"; //len = 10
+	len = 12;
 	printf("%s\n", dst2);
-	printf("%s\n", src2);
+	printf("%s\n", src0);
 	if (ft == 1)
-		res = ft_strlcat(dst2, src2, len);
+		res = ft_strlcat(dst2, src0, len);
 	else
-		res = strlcat(dst2, src2, len);
+		res = strlcat(dst2, src0, len);
 	printf("%s\n", dst2);
-	printf("%s\n", dst2 + 4); //To print after src
 	printf("%zu\n", res);
 	
-	//Test 3: n > #chars of dst
-	char	dst3[30] = "3 codam campus";
-	char	src3[30] = "3no";
-	len = 20;
+	//Test 3: Testing with normal dst & src
+	//Buffer large enough, len_total = 29 + \0
+	//Test different len = 40 > lend + lens.
+	char	dst3[50] = "3----ABCDE"; //len = 10
+	len = 29;
 	printf("%s\n", dst3);
-	printf("%s\n", src3);
+	printf("%s\n", src0);
 	if (ft == 1)
-		res = ft_strlcat(dst3, src3, len);
+		res = ft_strlcat(dst3, src0, len);
 	else
-		res = strlcat(dst3, src3, len);
+		res = strlcat(dst3, src0, len);
 	printf("%s\n", dst3);
-	printf("%s\n", dst3 + 4);
 	printf("%zu\n", res);
 
 /*
-	//Test 4: n > size of  dst
-	//Both zsh: abort.
-	char	dst4[10] = "4 codam";
-	char	src4[30] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	len = 20;
-	printf("%s\n", dst4);
-	printf("%s\n", src4);
+	//Test 3b: Testing with normal dst & src
+	//Negative n; libc errors - UB?
+	len = -5;
+	printf("%s\n", dst3);
+	printf("%s\n", src0);
 	if (ft == 1)
-		res = ft_strlcat(dst4, src4, len);
+		res = ft_strlcat(dst3, src0, len);
 	else
-		res = strlcat(dst4, src4, len);
-	printf("%s\n", dst4);
+		res = strlcat(dst3, src0, len);
+	printf("%s\n", dst3);
 	printf("%zu\n", res);
 */
-
-	//Test 5: size of src too small for \0
-	char	dst5[30] = "5 codam campus";
-	char	src5[4] = "5nok";
-	len = 10;
-	printf("%s\n", dst5);
-	printf("%s\n", src5);	
+/*
+	//Test 4: weird input, n = NULL
+	//Compile errors 2x;
+	printf("%s\n", dst3);
+	printf("%s\n", src0);
 	if (ft == 1)
-		printf("strlen src = %lu\n", ft_strlen(src5));
+		res = ft_strlcat(dst3, src0, NULL);
 	else
-		printf("strlen src = %lu\n", strlen(src5));
-	if (ft == 1)
-		res = ft_strlcat(dst5, src5, len);
-	else
-		res = strlcat(dst5, src5, len);
+		res = strlcat(dst3, src0, NULL);
+	printf("%s\n", dst3);
+	printf("%zu\n", res);
+*/
+/*
+	//Test 5: dst/src is NULL
+	//libc/libft seg fault
+	char	dst5[50] = "12345";;
+	char	src5[50] = "abcde";
+	len = 15;
 	printf("%s\n", dst5);
+	printf("%s\n", src5);
+	if (ft == 1)
+		res = ft_strlcat(dst5, NULL, len);
+	else
+		res = strlcat(dst5, NULL, len);
+	printf("%s\n", dst5);
+	printf("%zu\n", res);
+*/
+	//Test 6: dst/src empty
+	//libc/libft seg fault
+	char	dst6[50] = "12345";;
+	char	src6[50] = "";
+	len = 15;
+	printf("%s\n", dst6);
+	printf("%s\n", src6);
+	if (ft == 1)
+		res = ft_strlcat(dst6, src6, len);
+	else
+		res = strlcat(dst6, src6, len);
+	printf("%s\n", dst6);
 	printf("%zu\n", res);
 
 /*
-	//Test 6: dst/src is NULL
-	char	dst6[30] = "6 codam campus";
-	char	src6[30] = "6nok";
-	len = 10;
-	printf("%s\n", dst6);
+	//Test 7: dst/src buffer too small
+	//libc abort - UB?
+	char	dst7[8] = "12345";;
+	char	src7[8] = "abcde";
+	len = 9;
+	printf("%s\n", dst7);
+	printf("%s\n", src7);
 	if (ft == 1)
-		printf("strlen src = %lu\n", ft_strlen(src6));
+		res = ft_strlcat(dst7, src7, len);
 	else
-		printf("strlen src = %lu\n", strlen(src6));
-	if (ft == 1)
-		res = ft_strlcat(dst6, NULL, len);
-	else
-		res = strlcat(dst6, NULL, len);
-	printf("%s\n", dst6);
+		res = strlcat(dst7, src7, len);
+	printf("%s\n", dst7);
 	printf("%zu\n", res);
 */
 }

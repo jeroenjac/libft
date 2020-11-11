@@ -9,3 +9,5 @@
 #output files of test scripts
 */libc
 */libft
+
+*/a.out.dsym/
