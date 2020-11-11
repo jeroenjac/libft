@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/03 11:48:37 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/11 17:08:17 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/11 18:32:25 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t	ft_strlcpy(char *dst, const char *src, size_t ldst);
 size_t	ft_strlcat(char *dst, const char *src, size_t ldst);
 char	*ft_strchr(const char *s, int c);
+char	*ft_strrchr(const char *s, int c);
 
 #endif
