@@ -6,7 +6,7 @@
 /*   By: jjacobs <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/02 17:55:48 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/12 12:22:59 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/12 13:27:53 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,44 +47,58 @@ int		main(int argc, char **argv)
 	if (ft == 1)
 	{
 		printf("%s\n", ft_strnstr(test0, lookfor, len));
+		
 		//it should not adjust input pointers
 		printf("bf = %s\n", test1);
 		printf("%s\n", ft_strnstr(test1, lookfor, len));
 		printf("af = %s\n", test1);
+		
 		printf("%s\n", ft_strnstr(test2, lookfor, len));
 		printf("%s\n", ft_strnstr(test0, lookfor, len_short));
 		printf("%s\n", ft_strnstr(test1, lookfor, len_short));
+		//scan zero chars
 		printf("%s\n", ft_strnstr(test0, "A", 0));
+		//one char, first/last in hs.
 		printf("%s\n", ft_strnstr(test0, "A", 1));
+		printf("%s\n", ft_strnstr(test0, "5", 1));
+		//hs or nd "";
+		printf("%s\n", ft_strnstr("", "abc", 5));
+		printf("%s\n", ft_strnstr("abc", "", 5));
 	}
 	else
 	{
 		printf("%s\n", strnstr(test0, lookfor, len));
+		
 		//it should not adjust input pointers
 		printf("bf = %s\n", test1);
 		printf("%s\n", strnstr(test1, lookfor, len));
 		printf("af = %s\n", test1);
+		
 		printf("%s\n", strnstr(test2, lookfor, len));
 		printf("%s\n", strnstr(test0, lookfor, len_short));
 		printf("%s\n", strnstr(test1, lookfor, len_short));
 		printf("%s\n", strnstr(test0, "A", 0));
 		printf("%s\n", strnstr(test0, "A", 1));
+		printf("%s\n", strnstr(test0, "5", 1));
+		//hs or nd "";
+		printf("%s\n", ft_strnstr("", "abc", 5));
+		printf("%s\n", ft_strnstr("abc", "", 5));
 	}
 
 /*
 	//Special tests, e.g. str = NULL
 	//libc and libft seg fault.
 	if (ft == 1)
-		printf("%i\n", ft_strncmp(NULL, "abc", 3));
+		printf("%s\n", ft_strnstr(NULL, "abc", 3));
 	else
-		printf("%i\n", strncmp(NULL, "abc", 3));
-
-
+		printf("%s\n", strnstr(NULL, "abc", 3));
+*/
+/*
 	//Special tests, e.g. n = NULL
 	//libc and libft do not compile
 	if (ft == 1)
-		printf("%i\n", ft_strncmp("def", "abc", NULL));
+		printf("%s\n", ft_strnstr("def", "abc", NULL));
 	else
-		printf("%i\n", strncmp("def", "abc", NULL));
+		printf("%s\n", strnstr("def", "abc", NULL));
 */
 }
