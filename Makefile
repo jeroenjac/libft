@@ -6,25 +6,32 @@
 #    By: jjacobs <jjacobs@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/03 11:48:52 by jjacobs       #+#    #+#                  #
-#    Updated: 2020/11/12 11:30:35 by jjacobs       ########   odam.nl          #
+#    Updated: 2020/11/12 23:20:51 by jjacobs       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = ./ft_strlen.c \
-	  ./ft_strncmp.c \
-	  ./ft_memset.c \
+SRC = ./ft_memset.c \
 	  ./ft_bzero.c \
 	  ./ft_memcpy.c \
 	  ./ft_memccpy.c \
 	  ./ft_memchr.c \
 	  ./ft_memmove.c \
 	  ./ft_memcmp.c \
+	  ./ft_strlen.c \
 	  ./ft_strlcpy.c \
 	  ./ft_strlcat.c \
 	  ./ft_strchr.c \
 	  ./ft_strrchr.c \
 	  ./ft_strnstr.c \
+	  ./ft_strncmp.c \
+	  ./ft_atoi.c \
 	  ./ft_isalpha.c \
+	  ./ft_isdigit.c \
+	  ./ft_isalnum.c \
+	  ./ft_isascii.c \
+	  ./ft_isprint.c \
+	  ./ft_toupper.c \
+	  ./ft_tolower.c \
 
 OBJ = $(SRC:.c=.o)
 BUILDDIR = obj
@@ -36,7 +43,7 @@ all:	$(NAME)
 
 $(NAME): $(SRC)
 	gcc $(CFLAGS) -c $(SRC)
-	ar -vq $(NAME) $(OBJ)
+	ar -vr $(NAME) $(OBJ)
 
 clean:
 	rm -f $(OBJ)

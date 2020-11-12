@@ -9,5 +9,7 @@
 #output files of test scripts
 */libc
 */libft
+*/allresults
 
+#other aux files I do not want to git
 */a.out.dsym/

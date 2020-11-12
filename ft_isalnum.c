@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strnstr.c                                       :+:    :+:            */
+/*   ft_isalnum.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/12 10:08:23 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/12 13:27:05 by jjacobs       ########   odam.nl         */
+/*   Created: 2020/11/12 13:39:07 by jjacobs       #+#    #+#                 */
+/*   Updated: 2020/11/12 15:59:07 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *hs, const char *nd, size_t len_s)
+int		ft_isalnum(int c)
 {
-	size_t	len_nd;
-
-	len_nd = ft_strlen(nd);
-	if (*nd == '\0')
-		return ((char*)hs);
-	while (*hs != '\0' && len_s > 0)
-	{
-		if (len_s < len_nd)
-			return (NULL);
-		if (ft_strncmp(hs, nd, len_nd) == 0)
-			return ((char*)hs);
-		hs++;
-		len_s--;
-	}
-	return (NULL);
+	if (ft_isdigit(c))
+		return (1);
+	else if (ft_isalpha(c))
+		return (1);
+	else
+		return (0);
 }

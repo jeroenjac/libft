@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strnstr.c                                       :+:    :+:            */
+/*   ft_atoi.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/12 10:08:23 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/12 13:27:05 by jjacobs       ########   odam.nl         */
+/*   Created: 2020/11/12 15:59:31 by jjacobs       #+#    #+#                 */
+/*   Updated: 2020/11/12 18:27:07 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *hs, const char *nd, size_t len_s)
+int		ft_atoi(const char *str)
 {
-	size_t	len_nd;
+	long	res;
+	int		minus;
 
-	len_nd = ft_strlen(nd);
-	if (*nd == '\0')
-		return ((char*)hs);
-	while (*hs != '\0' && len_s > 0)
+	res = 0;
+	minus = 1;
+	if (*str == '-')
 	{
-		if (len_s < len_nd)
-			return (NULL);
-		if (ft_strncmp(hs, nd, len_nd) == 0)
-			return ((char*)hs);
-		hs++;
-		len_s--;
+		minus = -1;
+		str++;
 	}
-	return (NULL);
+	while (*str != '\0')
+	{
+		if (ft_isdigit(*str))
+			res = res * 10 + *str - '0';
+		else
+			return (minus * (int)res);
+		str++;
+	}
+	return (minus * (int)res);
 }
