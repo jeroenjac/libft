@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_toupper.c                                       :+:    :+:            */
+/*   ft_calloc.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/12 21:52:55 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/13 11:22:04 by jjacobs       ########   odam.nl         */
+/*   Created: 2020/11/13 13:02:30 by jjacobs       #+#    #+#                 */
+/*   Updated: 2020/11/13 13:12:29 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h> //for malloc
+#include "libft.h" // for ft_bzero
 
-int		ft_toupper(int c)
+void	*ft_calloc(size_t count, size_t size)
 {
-	unsigned int	p;
+	int		*ptr;
 
-	p = (unsigned int)c;
-	if (ft_isalpha(p) && p > 'Z')
-		p = p + 'A' - 'a';
-	return (p);
+	//malloc for count * size? is in bytes
+	ptr = malloc(size * count);
+	//bzero for these bytez
+	ft_bzero(ptr, size * count);
+	return (ptr);
 }

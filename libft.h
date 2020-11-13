@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/03 11:48:37 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/12 21:49:05 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/13 13:20:48 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 
-void	*calloc(size_t count, size_t size);
-char	*strdup(const char *s1);
+void	*ft_calloc(size_t count, size_t size);
+char	*ft_strdup(const char *s1);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 21:59:40 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/12 22:33:41 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/13 09:03:20 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,45 +14,43 @@
 #include <stdio.h>
 #include <limits.h>
 #include <ctype.h>
+#include "inittest.c"
+
+int		inittest(int argc, char *ftname);
 
 int		main(int argc, char **argv)
 {
 	int		ft;
 
-	//More than 1 argument => No valid input
-    //no arguments => work with libc function
-    //1 argument => work with libft function
     printf("prog: %s\n", argv[0]);
-    if (argc > 2)
-    {
-        printf("Error w/ testing. Only use 0 or 1 arguments.\n");
-        return (0);
-    }
-    else if (argc == 2)
-        ft = 1;
-    else
-        ft = 0;
-    if (ft == 1)
-        printf("TESTING LIBFT FUNCTION\n");
-    else
-        printf("TESTING LIBC FUNCTION\n");
-
-	//Section 1: Functional tests
-	// - Print al ascii chars
-	// - to upper these
-
+	ft = inittest(argc, "ft_toupper");
+	
+	//Section 1: Functional tests: all ascii chars
 	int		i = 32;
-	int		imax = 127;
+	int		imax = 50; //127;
 
 	while (i <= imax)
 	{
 		if (ft == 1)
 			printf("i = %i - to_upper(%c) = %c\n", i, (char)i, ft_toupper((char)i));
-		else
+		if (ft == 0)
 			printf("i = %i - to_upper(%c) = %c\n", i, (char)i, toupper((char)i));
 		i++;
 	}
 
-
-
+	//Section 2: Corner cases 0 / INT MIN / MAX etc.
+	//Not possible to compare these using diff (gives binary output)
+	int		passed1 = 0;
+	
+	if (ft == 2)
+	{
+		passed1 = ft_toupper(0) == toupper(0);
+		printf("toupper(0) equal? \t\t%i\n", passed1);
+		passed1 = ft_toupper(INT_MAX) == toupper(INT_MAX);
+		printf("toupper(max) equal? \t\t%i\n", passed1);
+		passed1 = ft_toupper(INT_MIN) == toupper(INT_MIN);
+		printf("toupper(min) equal? \t\t%i\n", passed1);
+		passed1 = ft_toupper(INT_MAX + 200) == toupper(INT_MAX + 200);
+		printf("toupper(max + 200) equal? \t%i\n", passed1);
+	}
 }

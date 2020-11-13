@@ -10,6 +10,7 @@
 */libc
 */libft
 */allresults
+*.hex
 
 #other aux files I do not want to git
 */a.out.dsym/
