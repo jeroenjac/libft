@@ -6,7 +6,7 @@
 #    By: jjacobs <jjacobs@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/03 11:48:52 by jjacobs       #+#    #+#                  #
-#    Updated: 2020/11/13 13:20:12 by jjacobs       ########   odam.nl          #
+#    Updated: 2020/11/15 21:16:20 by jjacobs       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRC = ./ft_memset.c \
 	  ./ft_toupper.c \
 	  ./ft_tolower.c \
 	  ./ft_calloc.c \
+	  ./ft_strdup.c \
 
 OBJ = $(SRC:.c=.o)
 BUILDDIR = obj

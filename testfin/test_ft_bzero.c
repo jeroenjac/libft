@@ -6,7 +6,7 @@
 /*   By: jjacobs <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/02 17:43:08 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/13 11:48:26 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/15 23:53:07 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,8 @@ int     main(int argc, char **argv)
 		ft_bzero(name, len);
 	if (ft < 2)
 		printf("After: %s\n", name);
-	
+
+/*
 	//negative: libc aborts, libft segfault
 	len = -2;
 	if (ft < 2)
@@ -129,7 +130,7 @@ int     main(int argc, char **argv)
 		ft_bzero(name, len);
 	if (ft < 2)
 		printf("After: %s\n", name);
-
+*/
 /*
 	//Testing with str = NULL
 	//libc and libft segfault
