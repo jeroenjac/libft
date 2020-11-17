@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strchr.c                                        :+:    :+:            */
+/*   ft_strndup.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/11 17:03:14 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/17 09:48:25 by jjacobs       ########   odam.nl         */
+/*   Created: 2020/11/16 17:33:25 by jjacobs       #+#    #+#                 */
+/*   Updated: 2020/11/16 18:23:27 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strndup(const char *s1, size_t n)
 {
-	char	cr;
+	char	*dup;
 
-	cr = (char)c;
-	while (*s != cr && *s != '\0')
-		s++;
-	if (*s == cr)
-		return ((char*)s);
-	else
+	dup = malloc((n + 1) * sizeof(char));
+	if (dup == NULL)
 		return (NULL);
+	ft_memcpy(dup, (char*)s1, n * sizeof(char));
+	dup[n] = '\0';
+	return (dup);
 }

@@ -59,11 +59,13 @@ gcc -Wall -Werror -Wextra ../libft.a test_ft_strchr.c
 ./a.out 1 > libft
 ./a.out > libc
 diff libc libft >> results_all_tests
+./a.out 1 1
 
 gcc -Wall -Werror -Wextra ../libft.a test_ft_strrchr.c
 ./a.out 1 > libft
 ./a.out > libc
 diff libc libft >> results_all_tests
+./a.out 1 1
 
 gcc -Wall -Werror -Wextra ../libft.a test_ft_strnstr.c
 ./a.out 1 > libft
@@ -129,4 +131,14 @@ gcc -Wall -Werror -Wextra ../libft.a test_ft_strdup.c
 diff libc libft >> results_all_tests
 ./a.out 1 1
 
-echo 'all tests executed'
+#part 2
+gcc -Wall -Werror -Wextra ../libft.a test_ft_substr.c
+./a.out 1 1 1
+
+gcc -Wall -Werror -Wextra ../libft.a test_ft_strjoin.c
+./a.out 1 1 1
+
+#gcc -Wall -Werror -Wextra ../libft.a test_ft_strtrim.c
+#./a.out 1 1 1
+
+echo 'all tests executed >> inspect output file "results_all_tests" for diff results!'

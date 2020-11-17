@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strchr.c                                        :+:    :+:            */
+/*   ft_strjoin.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/11 17:03:14 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/17 09:48:25 by jjacobs       ########   odam.nl         */
+/*   Created: 2020/11/16 18:28:18 by jjacobs       #+#    #+#                 */
+/*   Updated: 2020/11/16 19:00:40 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	cr;
+	size_t	len1;
+	size_t	len2;
+	char	*join;
 
-	cr = (char)c;
-	while (*s != cr && *s != '\0')
-		s++;
-	if (*s == cr)
-		return ((char*)s);
-	else
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	join = malloc((len1 + len2 + 1) * sizeof(char));
+	if (join == NULL)
 		return (NULL);
+	ft_memcpy(join, (char*)s1, len1 * sizeof(char));
+	ft_memcpy(join + len1, (char*)s2, len2 * sizeof(char));
+	join[len1 + len2 + 1] = '\0';
+	return (join);
 }

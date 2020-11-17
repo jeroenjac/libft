@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/13 13:02:30 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/14 10:40:01 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/16 18:40:30 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_calloc(size_t count, size_t size)
 	void	*p;
 
 	p = malloc(size * count);
-	if ( p != NULL)
+	if (p != NULL)
 		ft_bzero(p, size * count);
 	return (p);
 }
