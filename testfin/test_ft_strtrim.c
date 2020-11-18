@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/17 12:54:05 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/17 13:34:54 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/18 14:52:57 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int		main(int argc, char **argv)
 		//Tests using test functions "testtrim()":
 		testtrim("a1234b",	"ab",		"1234");
 		testtrim("ab",		"",			"ab");
+		testtrim("aaaa",	"a",		"");
 		testtrim("abcba",	"aaaaa",	"bcb");
 		testtrim("qqabcqq", "abc",		"qqabcqq");
 		testtrim("abqqcd",	"abcd",		"qq");
