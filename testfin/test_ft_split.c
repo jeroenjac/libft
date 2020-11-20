@@ -6,20 +6,27 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/17 16:56:26 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/19 00:36:14 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/20 13:06:45 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "inittest.c"
 
-//for testing (also helperfunction of ft_split.c)
-int		count_strings(char *s, char d);
 void	printss(char **dbp);
 void	freess(char **dbp);
+
+//for testing (also helperfunction of ft_split.c)
+size_t	count_strings(char *s, char d);
+
+//Available testing modes
+//0. Some unstructured manual tests
+//1. Some structured tests
+//4. To test count_strings (crucial for ft_split...)
 
 int		main(int argc, char **argv)
 {
@@ -27,8 +34,116 @@ int		main(int argc, char **argv)
 
 	printf("prog: %s\n", argv[0]);
 	ft = inittest(argc, "ft_split");
+
+	char	del;
+
+//Some tests, easy to change by hand
+if (ft == 0)
+{
+	
+	printf("Testing ft_split function...\n");
+	char	**split_test1;
+	char	**split_test2;
+	char	*testss;
+	char	*testss2;
+
+	testss = strdup("doei");
+	del = 'l';
+	//printf("# strings = %zu\n", count_strings((char*)testss, del));
+	split_test1 = ft_split(testss, del);
+	
+	free(testss);
+	
+	printss(split_test1);
+	freess(split_test1);
+	free(split_test1);
+
+
+	testss2 = strdup("borus,,,maria,,,,jeroen:");
+	del = ',';
+	split_test2 = ft_split(testss2, del);
+	free(testss2);
+	
+	printss(split_test2);
+	freess(split_test2);
+	free(split_test2);
+}
+//All different possible tests scenarios with & withouth del etc.
+if (ft == 1)
+{
+	char dela = 'd'; //Should be 'd' for structured tests.
+	int	ntests = 12; //Number of tests + terminating NULL pointer.
+	char **testcases;
+	testcases = malloc((ntests + 1) * sizeof (char *));
+	
+	*(testcases + 0) = ft_strdup("");
+	*(testcases + 1) = ft_strdup("d");
+	*(testcases + 2) = ft_strdup("ddddddd");
+	*(testcases + 3) = ft_strdup("test4");
+	*(testcases + 4) = ft_strdup("dtest5");
+	*(testcases + 5) = ft_strdup("test6d");
+	*(testcases + 6) = ft_strdup("dddddtest7");
+	*(testcases + 7) = ft_strdup("test8ddddd");
+	*(testcases + 8) = ft_strdup("test9dtest9");
+	*(testcases + 9) = ft_strdup("test10dddddtest10");
+	*(testcases + 10) = ft_strdup("test11dddd11dddttttdtdtdt");
+	*(testcases + 11) = NULL;
+
+	char ***splitresults;
+	int wt = 0;
+	splitresults = malloc((ntests + 1) * sizeof (char *));
+	while (*(testcases + wt) != NULL)
+	{
+		*(splitresults + wt) = ft_split(testcases[wt], dela);
+		wt++;
+	}
+	*(splitresults + wt) = NULL;
+	
+	wt = 0;
+	while (*(splitresults + wt) != NULL)
+	{
+		printf("Test %i: split \"%s\". Delimeter = %c\n", wt + 1, testcases[wt], dela);
+		printss(*(splitresults + wt));
+		wt++;
+	}
+}
+
+//A test that failed while others succeeded
+if (ft == 0)
+{
+	char	test2[] = "hallo wat ben ik aan het doen ";
+	char	**split3;
+	
+	del = 'l';
+	//printf("# strings = %i\n", count_strings((char*)test2, del));
+	split3 = ft_split(test2, del);
+	printss(split3);
+}	
+
+//Used to protype count_strings - make sure count_strings is not static.
+
 /*
-	//random stuff
+if (ft == 4)
+{
+	char	c = '1';
+	printf("Testing count_strings function...\n");
+	printf("# strings = %zu\n", count_strings("", c));
+	printf("# strings = %zu\n", count_strings("1", c));
+	printf("# strings = %zu\n", count_strings("1111", c));
+	printf("# strings = %zu\n", count_strings("test", c));
+	printf("# strings = %zu\n", count_strings("1test", c));
+	printf("# strings = %zu\n", count_strings("test1", c));
+	printf("# strings = %zu\n", count_strings("1111test", c));
+	printf("# strings = %zu\n", count_strings("test1111", c));
+	printf("# strings = %zu\n", count_strings("test1test", c));
+	printf("# strings = %zu\n", count_strings("test1111test", c));
+
+	printf("# strings = %lu\n", count_strings("test11test1test1111test11", '1'));
+}	
+*/
+
+	//random stuff I used for testing parts of split function
+/*
 	char	*test = "test111";
 	char	*ptt;
 
@@ -40,36 +155,27 @@ int		main(int argc, char **argv)
 	char	d = '1';
 	printf("test: %s\n", ft_strtrim("1", "1"));
 	printf("test2: %i\n", *ft_strtrim("1", "1") != d);
-*/
-/*
-	//prototyping count_strings
-	char	c = '1';
-	printf("# strings = %i\n", count_strings("", c));
-	printf("# strings = %i\n", count_strings("1", c));
-	printf("# strings = %i\n", count_strings("1111", c));
-	printf("# strings = %i\n", count_strings("test", c));
-	printf("# strings = %i\n", count_strings("1test", c));
-	printf("# strings = %i\n", count_strings("test1", c));
-	printf("# strings = %i\n", count_strings("1111test", c));
-	printf("# strings = %i\n", count_strings("test1111", c));
-	printf("# strings = %i\n", count_strings("test1test", c));
-	printf("# strings = %i\n", count_strings("test1111test", c));
-	printf("# strings = %i\n", count_strings("test11test1test1111test11", c));
-*/
-	char **testsplit;
 
-	//char	*test = NULL;
-	//char	*test = "hallo wat ben ik aan het doen ";
-	char	test[] = "Jeroen999Sophie";
-	char	del = '9';
-	printf("# strings = %i\n", count_strings((char*)test, del));
+	char	s[10] = "aaaba";
+	if (strchr(s, 'b') == s + 3 )
+		printf("Hoera\n");
+	//printf("%s\n", s - 2);
 
-	testsplit = ft_split(test, del);
-	printss(testsplit);
-	
-	freess(testsplit);
-	free(testsplit);
+	char *dup1;
+	//char *dup2;
+
+	dup1 = strndup("hallo56789", -1);
+	size_t stn = -1;
+	printf("size_t neg = %zu\n", stn);
+	printf("%s\n", dup1);
+	//dup1 = ft_strndup("hallo56789", -7);
+	//printf("%s\n", dup1);
+*/
 }
+
+//Two helper functions for testing: 
+// 1. print results
+// 2. free result - not needed?
 
 void	printss(char **dbp)
 {
@@ -81,6 +187,7 @@ void	printss(char **dbp)
 		printf("s%i: %s\n", w, *(dbp + w));
 		w++;
 	}
+	printf("s%i: %s\n", w, *(dbp + w));
 }
 
 void	freess(char **dbp)
@@ -93,4 +200,5 @@ void	freess(char **dbp)
 		free(*(dbp + w));
 		w++;
 	}
+	free (*(dbp + w));
 }

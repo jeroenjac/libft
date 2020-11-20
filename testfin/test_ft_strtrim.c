@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/17 12:54:05 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/18 14:52:57 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/20 13:26:30 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int		main(int argc, char **argv)
 		}
 		
 		//Tests using test functions "testtrim()":
+		//		input		charset		expected output
 		testtrim("a1234b",	"ab",		"1234");
 		testtrim("ab",		"",			"ab");
 		testtrim("aaaa",	"a",		"");
@@ -75,8 +76,10 @@ int		main(int argc, char **argv)
 		testtrim("qqqaaab",	"ab",		"qqq");
 		testtrim("baqqqa",	"a\0b",		"baqqq");
 		testtrim("abc1234",	"abc",		"1234");
-		testtrim("abc",		NULL,		"abc");
-		
+		testtrim("abc",		NULL,		"abc"); //error?
+	}
+	if (ft == 5)	
+	{
 		//testtrim does not work with s = NULL, due to strncmp not working with NULL.
 		char	setw[20] = "set";
 		printf("Test for string = NULL (expected: (null)\n");

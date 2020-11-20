@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/13 08:32:49 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/17 13:21:25 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/19 13:48:59 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int		inittest(int argc, char *ftname)
     //no arguments => work with libc function
     //1 argument => work with libft function
     ft = argc - 1;
-    if (ft > 3)
-        printf("Error w/ testing. Only use 0 - 3 arguments.\n");
+    if (ft > 5)
+        printf("Error w/ testing. Mode not supported\n");
     else
 		printf("Testing/mode = %i: %s\n", ft, ftname);
     if (ft == 0)
@@ -32,6 +32,10 @@ int		inittest(int argc, char *ftname)
         printf("COMPARE TESTS LIBFT == LIBC (output diff not poss.)\n");
     if (ft == 3)
         printf("COMPARE TESTS LIBFT == Expected Output\n");
-	
+	if (ft == 4)
+        printf("TEST LIBC - error result\n");
+	if (ft == 5)
+        printf("TEST LIBFT - error result\n");
+
 	return (ft);
 }

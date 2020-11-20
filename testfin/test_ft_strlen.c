@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/15 23:43:25 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/16 00:05:40 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/19 13:49:03 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ int		main(int argc, char **argv)
 	
 	//t3 - test on NULL;
 	// libc & libft segfaulting
-	if (ft == 0)
+	if (ft == 4)
 		printf("Len =  %lu\n", strlen(NULL));
-	if (ft == 1)
+	if (ft == 5)
 		printf("Len =  %lu\n", ft_strlen(NULL));
 }
