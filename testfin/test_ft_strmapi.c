@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/21 23:40:22 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/22 00:06:34 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/22 00:14:29 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,27 @@
 
 #include "inittest.c"
 
+//Test functions for strmapi
 char	capOdd(unsigned int	index, char c)
 {
 	if (index % 2 == 0)
-		return (c);
+		return (ft_tolower(c));
 	else
 		return(ft_toupper(c));
 }
 
 char	c3(unsigned int	index, char c)
 {
-	if (index == 3)
+	if (index == 2)
 		return ('C');
+	else
+		return(c);
+}
+
+char	simple(unsigned int	index, char c)
+{
+	if (index != 2003)
+		return (ft_isalpha(c) + '0');
 	else
 		return(c);
 }
@@ -46,7 +55,7 @@ int		main(int argc, char **argv)
 
 	char	*tr0;
 	
-	tr0 = ft_strmapi("some string", *capOdd);
+	tr0 = ft_strmapi("some STRING", *capOdd);
 	printf("%s\n", tr0);
 	
 	char	*tr1;
@@ -54,6 +63,9 @@ int		main(int argc, char **argv)
 	tr1 = ft_strmapi("12345", *c3);
 	printf("%s\n", tr1);
 	
-	tr1 = ft_strmapi("", *c3);
+	tr1 = ft_strmapi("NRD", *c3);
+	printf("%s\n", tr1);
+	
+	tr1 = ft_strmapi("KOEK VETO", *simple);
 	printf("%s\n", tr1);
 }
