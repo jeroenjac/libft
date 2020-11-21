@@ -6,16 +6,9 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/20 16:59:14 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/21 16:10:48 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/21 23:35:59 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
-
-//Tests
-// 0
-// negative
-// -0?
-// INTMAX
-// Test using atoi?
 
 #include "../libft.h"
 #include <stdio.h>
@@ -28,7 +21,11 @@
 /*
 ** Testing modes
 ** 0: Prototyping + testing digit count
-** 1: Structured testing, all different cases.
+** 1: Structured testing, all different cases; print the output
+** 3: Structured testing, checking failed/passed
+**		3a: manual w. output
+		3b: using atoi function
+		3c: using ft_atoi function, iterating through a range
 */
 
 //Testfunctions
