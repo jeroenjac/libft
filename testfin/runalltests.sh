@@ -138,16 +138,24 @@ diff libc libft >> results_all_tests
 ./a.out 1 1
 
 #part 2
+echo 'TESTING FT_SUBSTR'
 gcc -Wall -Werror -Wextra ../libft.a test_ft_substr.c
 ./a.out 1 1 1
 
+echo 'TESTING FT_STRJOIN'
 gcc -Wall -Werror -Wextra ../libft.a test_ft_strjoin.c
 ./a.out 1 1 1
 
+echo 'TESTING FT_STRTRIM'
 gcc -Wall -Werror -Wextra ../libft.a test_ft_strtrim.c
 ./a.out 1 1 1
 
+echo 'TESTING FT_SPLIT'
 gcc -Wall -Werror -Wextra ../libft.a test_ft_split.c
 ./a.out 1
+
+echo 'TESTING FT_ITOA'
+gcc -Wall -Werror -Wextra ../libft.a test_ft_itoa.c
+./a.out 1 1 1
 
 echo 'all tests executed >> inspect output file "results_all_tests" for diff results!'
