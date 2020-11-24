@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strndup.c                                       :+:    :+:            */
+/*   ft_putstr_fd.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/16 17:33:25 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/24 19:24:23 by jjacobs       ########   odam.nl         */
+/*   Created: 2020/11/24 16:34:06 by jjacobs       #+#    #+#                 */
+/*   Updated: 2020/11/24 19:23:55 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-char	*ft_strndup(char *s1, size_t n)
+void	ft_putstr_fd(char *s, int fd)
 {
-	char	*dup;
-
-	dup = malloc((n + 1) * sizeof(char));
-	if (dup == NULL)
-		return (NULL);
-	ft_memcpy(dup, s1, n * sizeof(char));
-	*(dup + n) = '\0';
-	return (dup);
+	while (*s != '\0')
+	{
+		ft_putchar_fd(*s, fd);
+		s++;
+	}
 }

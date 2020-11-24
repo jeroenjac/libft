@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/17 16:56:26 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/20 13:06:45 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/24 19:23:07 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,34 @@ if (ft == 1)
 		wt++;
 	}
 }
+//A single "automated" test
+	if (ft == 3)
+	{
+		char	*autotest = ft_strdup("1111test11dddd11dddttttdtdt1d1t1111");
+		char	delim = '1';
+		char	*autoresult[6] = {"test", "dddd", "dddttttdtdt", "d", "t", NULL};
+		char	**testresult = ft_split(autotest, delim);
+		int		succes = 1;
+		int		i = 0;
+		while (autoresult[i] != NULL)
+		{
+			if (strcmp(testresult[i], autoresult[i]) != 0)
+			{
+				succes = 0;
+				printf("ft_split: %-10s\texpected:%-10s\n", testresult[i],\
+				autoresult[i]);
+			}
+			i++;
+		}
+		if (succes == 0)
+			printf("TEST FAILED\n");
+		else
+			printf("TEST PASSED\n");
+	}
+	if (ft == 5)
+	{
+		printss(ft_split(NULL, 'a'));
+	}
 
 //A test that failed while others succeeded
 if (ft == 0)

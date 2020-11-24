@@ -6,7 +6,7 @@
 #    By: jjacobs <jjacobs@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/03 11:48:52 by jjacobs       #+#    #+#                  #
-#    Updated: 2020/11/24 01:11:29 by jjacobs       ########   odam.nl          #
+#    Updated: 2020/11/24 16:59:32 by jjacobs       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,9 @@ SRC = ./ft_memset.c \
 	  ./ft_itoa.c \
 	  ./ft_strmapi.c \
 	  ./ft_putchar_fd.c \
+	  ./ft_putstr_fd.c \
+	  ./ft_putendl_fd.c \
+	  ./ft_putnbr_fd.c \
 	  ./ft_strndup.c \
 
 OBJ = $(SRC:.c=.o)

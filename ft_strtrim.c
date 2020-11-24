@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/17 07:27:59 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/20 13:20:17 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/24 19:24:39 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 	n_before = 0;
 	if (set == NULL)
 		return (s);
-	while(ft_strchr((char *)set, *(s + n_before)) != NULL)
+	while (ft_strchr((char *)set, *(s + n_before)) != NULL)
 		n_before++;
 	len = ft_strlen(s);
 	n_after = 0;
-	while(ft_strchr((char *)set, *(s + len - n_after)) != NULL)
+	while (ft_strchr((char *)set, *(s + len - n_after)) != NULL)
 		n_after++;
 	len_trim = len - n_before - n_after;
 	return (ft_substr(s, n_before, len_trim + 1));
