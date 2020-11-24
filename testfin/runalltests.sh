@@ -158,4 +158,13 @@ echo 'TESTING FT_ITOA'
 gcc -Wall -Werror -Wextra ../libft.a test_ft_itoa.c
 ./a.out 1 1 1
 
+echo 'TESTING FT_STRMAPI'
+gcc -Wall -Werror -Wextra ../libft.a test_ft_strmapi.c
+./a.out 1 1 1
+echo 'strmapi with either str or fun = NULL results in segfault (2x)'
+./a.out 1 1 1 1
+./a.out 1 1 1 1 1
+
+echo
+echo 'DONE!!!'
 echo 'all tests executed >> inspect output file "results_all_tests" for diff results!'
