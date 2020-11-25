@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strncmp.c                                       :+:    :+:            */
+/*   ft_memmove.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jjacobs <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/02 17:53:17 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/25 18:20:25 by jjacobs       ########   odam.nl         */
+/*   Created: 2020/11/09 17:52:01 by jjacobs       #+#    #+#                 */
+/*   Updated: 2020/11/25 15:57:08 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-int		ft_strncmp(const char *s1, const char *s2, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	while (n > 1 && *s1 != '\0' && *s2 != '\0' && *s1 == *s2)
+	unsigned char	*d;
+	unsigned char	*s;
+	unsigned char	tmp[len];
+	unsigned int	i;
+
+	d = (unsigned char*)dst;
+	s = (unsigned char*)src;
+	i = 0;
+	while (i < len)
 	{
-		n--;
-		s1++;
-		s2++;
+		tmp[i] = s[i];
+		i++;
 	}
-	return ((unsigned char)(*s1) - (unsigned char)(*s2));
+	while (len > 0)
+	{
+		d[len - 1] = tmp[len - 1];
+		len--;
+	}
+	return (dst);
 }

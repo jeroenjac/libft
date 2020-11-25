@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/03 11:48:37 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/21 23:43:54 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/25 16:25:01 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,6 @@ void	ft_putnbr_fd(int n, int fd);
 ** Extra function here
 */
 
-char		*ft_strndup(char *s1, size_t n);
+char	*ft_strndup(char *s1, size_t n);
 
 #endif

@@ -6,30 +6,29 @@
 /*   By: jjacobs <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 17:52:01 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/09 21:34:54 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/25 16:26:13 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
+#include "libft.h"
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	unsigned char	*d;
 	unsigned char	*s;
-	unsigned char	tmp[len];
-	unsigned int	i;
 
-	d = (unsigned char*)dst;
-	s = (unsigned char*)src;
-	i = 0;
-	while (i < len)
-	{
-		tmp[i] = s[i];
-		i++;
-	}
+	if (dst == src)
+		return (dst);
+	if (src > dst)
+		return (ft_memcpy(dst, (void *)src, len));
+	d = dst + len - 1;
+	s = (void *)src + len - 1;
 	while (len > 0)
 	{
-		d[len - 1] = tmp[len - 1];
+		*d = *s;
+		d--;
+		s--;
 		len--;
 	}
 	return (dst);

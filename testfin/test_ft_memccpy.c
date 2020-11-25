@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/04 19:24:46 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/09 20:14:28 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/25 14:01:14 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "inittest.c"
+
 int		main(int argc, char **argv)
 {
 	int		ft;
 	size_t	n;
 	int		c;
 
+
 	//More than 1 argument => No valid input
 	//no arguments => work with libc function
 	//1 argument => work with libft function
+	
 	printf("prog: %s\n", argv[0]);
-	if (argc > 2)
-	{
-		printf("Error w/ testing. Only use 0 or 1 arguments.\n");
-		return (0);
-	}
-	else if (argc == 2)
-		ft = 1;
-	else
-		ft = 0;
-	if (ft == 1)
-		printf("TESTING LIBFT FUNCTION\n");
-	else
-		printf("TESTING LIBC FUNCTION\n");
+	ft = inittest(argc, "ft_memccpy");
 	
 	//Test 0: Test with n = 0 bytes.
 	char	src0[10] = "Zero";
@@ -47,7 +39,7 @@ int		main(int argc, char **argv)
 	printf("%s, %s\n", dst0, src0);
 	if (ft == 1)
 		ft_memccpy(dst0, src0, c, n);
-	else
+	if (ft == 0)
 		memccpy(dst0, src0, c, n);
 	printf("%s, %s\n", dst0, src0);
 	
@@ -59,7 +51,7 @@ int		main(int argc, char **argv)
 	printf("%s, %s\n", dst0b, src0b);
 	if (ft == 1)
 		ft_memccpy(dst0b, src0b, c, n);
-	else
+	if (ft == 0)
 		memccpy(dst0b, src0b, c, n);
 	printf("%s, %s\n", dst0b, src0b);
 /*
@@ -85,7 +77,7 @@ int		main(int argc, char **argv)
 	printf("%s, %s. n = %zu, c = %c.\n", dst1, src1, n, c);
 	if (ft == 1)
 		pr1 = ft_memccpy(dst1, src1, c, n);
-	else
+	if (ft == 0)
 		pr1 = memccpy(dst1, src1, c, n);
 	printf("dst_new: %s\n", dst1);
 	printf("ptr_return: %s\n", pr1);
@@ -97,7 +89,7 @@ int		main(int argc, char **argv)
 	printf("%s, %s. n = %zu, c = %c.\n", dst1, src1, n, c);
 	if (ft == 1)
 		pr1 = ft_memccpy(dst1b, src1, c, n);
-	else
+	if (ft == 0)
 		pr1 = memccpy(dst1b, src1, c, n);
 	printf("dst_new: %s\n", dst1);
 	printf("ptr_return: %s\n", pr1);
@@ -109,7 +101,7 @@ int		main(int argc, char **argv)
 	printf("%s, %s. n = %zu, c = %c.\n", dst1, src1, n, c);
 	if (ft == 1)
 		pr1 = ft_memccpy(dst1c, src1, c, n);
-	else
+	if (ft == 0)
 		pr1 = memccpy(dst1c, src1, c, n);
 	printf("dst_new: %s\n", dst1);
 	printf("ptr_return: %s\n", pr1);
@@ -126,7 +118,7 @@ int		main(int argc, char **argv)
 	puts(src2);
 	if (ft == 1)
 		pr2 = ft_memccpy(dst2, src2, c, n);
-	else
+	if (ft == 0)
 		pr2 = memccpy(dst2, src2, c, n);
 	puts(dst2);
 	printf("ptr_return: %s\n", pr2);
@@ -143,7 +135,7 @@ int		main(int argc, char **argv)
 	puts(src2b);
 	if (ft == 1)
 		pr2b = ft_memccpy(dst2b, src2b, c, n);
-	else
+	if (ft == 0)
 		pr2b = memccpy(dst2b, src2b, c, n);
 	puts(dst2b);
 	printf("ptr_return: %s\n", pr2b);
@@ -158,7 +150,7 @@ int		main(int argc, char **argv)
 	printf("%s, %s. n = %zu, c = %c.\n", dp3, sp3, n, c);
 	if (ft == 1)
 		pr3 = ft_memccpy(dp3, sp3, c, n);
-	else
+	if (ft == 0)
 		pr3 = memccpy(dp3, sp3, c, n);
 	printf("dst:%s, return pointer:%s\n", dp3, pr3);
 
@@ -196,8 +188,34 @@ int		main(int argc, char **argv)
 	c = '2';
 	if (ft == 1)
 		printf("New random test: %s\n", ft_memccpy(dst5c, "123456", c, n));
-	else
+	if (ft == 0)
 		printf("New random test: %s\n", memccpy(dst5c, "123456", c, n));
+	
+	//Test 5d: test for unsigned char (\200)
+	char	dst5d[] = "abcdefghij";
+	char	src5d[] = "123\2004567890";
+	n = 8;
+	c = '\200';
+	if (ft == 1)
+	{
+		printf("5d. Unsigned char test: %s\n", ft_memccpy(dst5d, src5d, c, n));
+		printf("dst: %s\n", dst5d);
+	}
+	if (ft == 0)
+	{
+		printf("5d. Unsigned char test: %s\n", memccpy(dst5d, src5d, c, n));
+		printf("dst: %s\n", dst5d);
+	}
+	
+	//Test 5e: test for unsigned char, c entered as int
+	char	dst5e[] = "abcdefghij";
+	char	src5e[] = "123\2004567890";
+	n = 8;
+	c = 0600;
+	if (ft == 1)
+		printf("5e. Unsigned char test: %s\n", ft_memccpy(dst5e, src5e, c, n));
+	if (ft == 0)
+		printf("5e. Unsigned char test: %s\n", memccpy(dst5e, src5e, c, n));
 
 /*
 	//Test 6: dst = NULL (var).
@@ -253,7 +271,7 @@ int		main(int argc, char **argv)
 	printf("%i, %i\n", *npd, *nps);
 	if (ft == 1)
 		ft_memccpy(npd, nps, c, n);
-	else
+	if (ft == 0)
 		memccpy(npd, nps, c, n);
 	printf("%i, %i\n", *npd, *nps);	
 
@@ -272,7 +290,7 @@ int		main(int argc, char **argv)
 	printf("%i, %i\n", *npd, *nps);
 	if (ft == 1)
 		ft_memccpy(npd, nps, c, n);
-	else
+	if (ft == 0)
 		memccpy(npd, nps, c, n);
 	printf("%i, %i\n", *npd, *nps);	
 
@@ -288,14 +306,15 @@ int		main(int argc, char **argv)
 	printf("\n");
 	if (ft == 1)
 		ft_memccpy(numdst7, numsrc7, c, n);
-	else
+	if (ft == 0)
 		memccpy(numdst7, numsrc7, c, n);
 	ct = 5;
 	while (ct-- > 0)
 		printf("(%i, %i), ", numdst7[4 - ct], numsrc7[4 - ct]);
 	printf("\n");
 	
-	//Test X: other data types?
+	//Test X: other data types
+	//NA, see man.
 
 	return (0);
 }
