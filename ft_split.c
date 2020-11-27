@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/17 16:28:19 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/24 19:18:36 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/27 09:20:20 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@
 ** Function to free all memory, only used if some string allocation fails.
 */
 
-static	void	free_strings(char **strings, size_t n)
+static	void	free_strings(char **ret, size_t n)
 {
 	while (n > 0)
 	{
 		n--;
-		free(*(strings + n));
+		free(*(ret + n));
 	}
-	free(strings);
+	free(ret);
 }
 
 static	size_t	count_strings(char *s, char d)
@@ -51,7 +51,7 @@ static	size_t	count_strings(char *s, char d)
 	return (strings);
 }
 
-void			cpy_strings(char *s, size_t n, char d, char **ret)
+static int		cpy_strings(char *s, size_t n, char d, char **ret)
 {
 	size_t	i;
 	char	*s_end;
@@ -69,12 +69,13 @@ void			cpy_strings(char *s, size_t n, char d, char **ret)
 		if (*(ret + i) == NULL)
 		{
 			free_strings(ret, i);
-			return ;
+			return (0);
 		}
 		s = s_end;
 		i++;
 	}
 	*(ret + n) = NULL;
+	return (1);
 }
 
 char			**ft_split(char const *s, char c)
@@ -88,6 +89,7 @@ char			**ft_split(char const *s, char c)
 	result = malloc((n_strings + 1) * sizeof(char*));
 	if (result == NULL)
 		return (NULL);
-	cpy_strings((char*)s, n_strings, c, result);
+	if (cpy_strings((char*)s, n_strings, c, result) == 0)
+		return (NULL);
 	return (result);
 }

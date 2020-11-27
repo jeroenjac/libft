@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/17 07:27:59 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/24 19:24:39 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/26 18:35:02 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	len;
 	size_t	len_trim;
 
+	if (s1 == NULL)
+		return (NULL);
 	s = (char*)s1;
 	n_before = 0;
 	if (set == NULL)

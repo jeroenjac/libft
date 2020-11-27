@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/21 23:27:14 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/24 01:09:26 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/26 18:38:25 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	int		len;
 	char	*output;
 
+	if (s == NULL)
+		return (NULL);
 	len = ft_strlen(s);
 	output = malloc((len + 1) * sizeof(char));
 	if (output == NULL)

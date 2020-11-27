@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/16 14:10:06 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/19 19:12:14 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/26 15:28:13 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_substr(char const *s1, unsigned int start, size_t len)
 {
 	size_t	s1_left;
 
+	if (s1 == NULL)
+		return (NULL);
 	s1_left = ft_strlen(s1);
 	if (s1_left <= start)
 		return (ft_strdup(""));

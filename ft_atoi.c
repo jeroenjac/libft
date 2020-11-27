@@ -6,31 +6,39 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 15:59:31 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/12 18:27:07 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/26 15:06:31 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+static int	isspace(char ch)
 {
-	long	res;
-	int		minus;
+	if (ch == '\t' || ch == '\n' || ch == '\v' ||\
+		ch == '\f' || ch == '\r' || ch == ' ')
+		return (1);
+	else
+		return (0);
+}
+
+int			ft_atoi(const char *str)
+{
+	int	res;
+	int	minus;
 
 	res = 0;
-	minus = 1;
+	minus = -1;
+	while (isspace(*str) == 1)
+		str++;
 	if (*str == '-')
+		minus = 1;
+	if (*str == '+' || *str == '-')
+		str++;
+	while (ft_isdigit(*str))
 	{
-		minus = -1;
+		res *= 10;
+		res -= (int)(*str - '0');
 		str++;
 	}
-	while (*str != '\0')
-	{
-		if (ft_isdigit(*str))
-			res = res * 10 + *str - '0';
-		else
-			return (minus * (int)res);
-		str++;
-	}
-	return (minus * (int)res);
+	return (minus * res);
 }

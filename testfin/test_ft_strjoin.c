@@ -6,14 +6,22 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/16 18:46:03 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/17 11:26:28 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/26 18:35:17 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "inittest.c"
+#include <string.h>
 
 #include "../libft.h"
+
+/*
+** Testing modes
+** 1. Simple testing when coding
+** 3. Comparing to expected output
+** 5. Error when arg is NULL
+*/
 
 int		main(int argc, char **argv)
 {
@@ -59,9 +67,17 @@ int		main(int argc, char **argv)
 			printf("\tSucces\n");
 		else
 			printf("Failed\n");
+		char *end = ft_strjoin("abc", "def");
+		char *tst = "abcdef";
+		printf ("Test 4 check j[len] = 0");
+		if (strcmp(end, tst) == 0)
+			printf("\tSucces\n");
+		else
+			printf("Failed\n");
+		printf("%i\n", strcmp(end, tst));
 	}
 	//t3: wrong input
-	if (ft == 1)
+	if (ft == 5)
 	{
 		printf("Part 3c: Test for string = NULL\n");
 		printf("%s", ft_strjoin(a3, NULL));

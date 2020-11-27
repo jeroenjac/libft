@@ -15,17 +15,23 @@ all test results (output diff files)
 < TESTING LIBC FUNCTION
 ---
 > TESTING LIBFT FUNCTION
-2c2
+2,3c2,3
+< Testing/mode = 0: ft_memccpy
 < TESTING LIBC FUNCTION
 ---
+> Testing/mode = 1: ft_memccpy
 > TESTING LIBFT FUNCTION
-2c2
+2,3c2,3
+< Testing/mode = 0: ft_memchr
 < TESTING LIBC FUNCTION
 ---
+> Testing/mode = 1: ft_memchr
 > TESTING LIBFT FUNCTION
-2c2
+2,3c2,3
+< Testing/mode = 0: ft_memmove
 < TESTING LIBC FUNCTION
 ---
+> Testing/mode = 1: ft_memmove
 > TESTING LIBFT FUNCTION
 2c2
 < TESTING LIBC FUNCTION
@@ -63,14 +69,28 @@ all test results (output diff files)
 < TESTING LIBC FUNCTION
 ---
 > TESTING LIBFT FUNCTION
-2c2
+2,4c2,4
+< Testing/mode = 0: ft_strncmp
+< TESTING LIBC FUNCTION
+< Only the sign should be equal
+---
+> Testing/mode = 1: ft_strncmp
+> TESTING LIBFT FUNCTION
+> Libft: only the sign should be equal
+17c17
+< 1
+---
+> 128
+2,3c2,3
+< Testing/mode = 0: ft_atoi
 < TESTING LIBC FUNCTION
 ---
+> Testing/mode = 1: ft_atoi
 > TESTING LIBFT FUNCTION
-2c2
-< TESTING LIBC FUNCTION
+30c30
+< 9223372036854775807444 = -1
 ---
-> TESTING LIBFT FUNCTION
+> 9223372036854775807444 = -556
 2c2
 < TESTING LIBC FUNCTION
 ---

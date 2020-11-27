@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/24 01:11:50 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/24 18:45:36 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/27 09:07:21 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,11 @@ int		main(int argc, char **argv)
 	{
 		printf("\n!! TESTING FT_PUTNBR_FD (print a num):\n");
 		ft_putnbr_fd(2020, 1);
+		ft_putendl_fd("", 1);
+		ft_putnbr_fd(-4, 1);
+		ft_putendl_fd("", 1);
+		ft_putnbr_fd(-422, 1);
+		ft_putendl_fd("", 1);
 		char	filename4[30] = "output_ft_putnbr_fd";	
 		fd = open(filename4, O_WRONLY | O_CREAT, 0644);
 		if (fd == -1)

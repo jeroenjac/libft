@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/21 23:40:22 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/24 18:54:02 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/26 18:39:30 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int		main(int argc, char **argv)
 	//Wrong input to function, or invalid fun ptr - does compile but segfaults
 	char	*tr5;
 
-		if (ft == 4)
+		if (ft == 4) //This is protected
 			tr5 = ft_strmapi(NULL, *c3);
 		if (ft == 5)
 			tr5 = ft_strmapi("Test", NULL);

@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/17 16:56:26 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/24 19:23:07 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/27 09:09:12 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ if (ft == 0)
 	char	*testss;
 	char	*testss2;
 
-	testss = strdup("doei");
-	del = 'l';
+	testss = strdup("end of line \0 or not?");
+	del = '\0';
 	//printf("# strings = %zu\n", count_strings((char*)testss, del));
 	split_test1 = ft_split(testss, del);
 	
@@ -59,7 +59,7 @@ if (ft == 0)
 	free(split_test1);
 
 
-	testss2 = strdup("borus,,,maria,,,,jeroen:");
+	testss2 = strdup(",jan,,,pete,,,,kevin:,,,,");
 	del = ',';
 	split_test2 = ft_split(testss2, del);
 	free(testss2);

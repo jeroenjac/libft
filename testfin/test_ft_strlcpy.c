@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/17 13:09:38 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/17 13:18:03 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/26 13:42:49 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 #include <string.h>
 #include <stdio.h>
 #include "inittest.c"
+
+/*
+** TEST SCEN
+** 0. Libc
+** 1. Libft
+** 4. Libc error
+** 5. Libf error
+*/
 
 int		main(int argc, char **argv)
 {
@@ -152,4 +160,13 @@ int		main(int argc, char **argv)
 	printf("%s\n", dst6);
 	printf("%zu\n", res);
 */
+	//Test 7: dst is NULL (direct)
+	//libc seg fault, libft protected?:
+	char	src7[20] = "abcde12345abcde1234";
+	len = 10;
+	if (ft == 5)
+		res = ft_strlcpy(NULL, src7, len);
+	if (ft == 4)
+		res = strlcpy(NULL, src7, len);
+	printf("%zu\n", res);
 }

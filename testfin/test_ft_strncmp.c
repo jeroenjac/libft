@@ -6,7 +6,7 @@
 /*   By: jjacobs <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/02 17:55:48 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/25 17:56:34 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/26 15:13:10 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int		main(int argc, char **argv)
 	char	test2[50] = "ABCDEbrood";
 	if (ft == 1)
 	{
+		printf("Libft: only the sign should be equal\n");
 		printf("%i\n", ft_strncmp("acc", "abc", 0));
 		printf("%i\n", ft_strncmp("acc", "acc", 0));
 		printf("%i\n", ft_strncmp("acc", "acc", 400));
@@ -92,6 +93,7 @@ int		main(int argc, char **argv)
 	}
 	if (ft == 0)
 	{
+		printf("Only the sign should be equal\n");
 		printf("%i\n", strncmp("acc", "abc", 0));
 		printf("%i\n", strncmp("acc", "acc", 0));
 		printf("%i\n", strncmp("acc", "acc", 400));
