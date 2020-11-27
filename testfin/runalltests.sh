@@ -89,9 +89,7 @@ diff libc libft >> results_all_tests
 
 echo 'TESTING FT_STRNCMP'
 gcc -Wall -Werror -Wextra ../libft.a test_ft_strncmp.c
-./a.out 1 > libft
-./a.out > libc
-diff libc libft >> results_all_tests
+./a.out 1 1 1
 
 echo 'TESTING FT_ATOI'
 gcc -Wall -Werror -Wextra ../libft.a test_ft_atoi.c
