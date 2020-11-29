@@ -6,7 +6,7 @@
 #    By: jjacobs <jjacobs@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/03 11:48:52 by jjacobs       #+#    #+#                  #
-#    Updated: 2020/11/29 18:11:58 by jjacobs       ########   odam.nl          #
+#    Updated: 2020/11/29 22:16:57 by jjacobs       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,18 +43,37 @@ SRC = ./ft_memset.c \
 	  ./ft_putchar_fd.c \
 	  ./ft_putstr_fd.c \
 	  ./ft_putendl_fd.c \
-	  ./ft_putnbr_fd.c \
-	  ./ft_strndup.c
+	  ./ft_putnbr_fd.c
+
+SRC_EXTRA = ./ft_strndup.c
+	  
+SRC_BONUS =
 
 NAME = libft.a
-OBJ_FILES = $(SRC:.c=.o)
+
+OBJ_FILES_REG = $(SRC:.c=.o)
+OBJ_FILES_EXTRA = $(SRC_EXTRA:.c=.o)
+OBJ_FILES_BONUS = $(SRC_BONUS:.c=.o)
+
 HEADER_FILES = libft.h
 CFLAGS = -Wall -Wextra -Werror
+
+ifdef WITH_BONUS
+OBJ_FILES = $(OBJ_FILES_REG) $(OBJ_FILES_EXTRA) $(OBJ_FILES_BONUS)
+else
+OBJ_FILES = $(OBJ_FILES_REG) $(OBJ_FILES_EXTRA)
+endif
 
 all:	$(NAME)
 
 $(NAME): $(OBJ_FILES)
 	ar -vr $@ $^
+
+# flags used: -v for extra output, -r for replace files in arch.
+# -c can be used to supress archive creating message. Not needed. 
+
+bonus:
+	$(MAKE) WITH_BONUS=1 all
 
 %.o: %.c $(HEADER_FILES)
 	$(CC) -c $(CFLAGS) -o $@ $<
@@ -67,4 +86,4 @@ fclean:	clean
 
 re:		fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re

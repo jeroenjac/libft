@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/03 11:48:37 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/25 16:25:01 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/29 18:26:17 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stddef.h>
 
 /*
-** Part A
+** Part A:
 */
 
 void	*ft_memset(void *pt, int c, size_t len);
