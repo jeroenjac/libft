@@ -75,9 +75,11 @@ all test results (output diff files)
 ---
 > Testing/mode = 1: ft_atoi
 > TESTING LIBFT FUNCTION
-30c30
+29,30c29,30
+< Libc: over long int
 < 9223372036854775807444 = -1
 ---
+> Libft: over long int, different result
 > 9223372036854775807444 = -556
 2c2
 < TESTING LIBC FUNCTION

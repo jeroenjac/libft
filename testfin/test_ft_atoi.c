@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 16:11:45 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/26 15:00:22 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/29 22:53:43 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int		main(int argc, char **argv)
 		printf("%s = %i\n", num2, ft_atoi(num2));
 		printf("%s = %i\n", num3, ft_atoi(num3));
 		printf("%s = %i\n", num4, ft_atoi(num4));
-		printf("Over long int 'fails'\n");
+		printf("Libft: over long int, different result\n");
 		printf("%s = %i\n", num5, ft_atoi(num5));
 	}
 	if (ft == 0)
@@ -89,7 +89,7 @@ int		main(int argc, char **argv)
 		printf("%s = %i\n", num2, atoi(num2));
 		printf("%s = %i\n", num3, atoi(num3));
 		printf("%s = %i\n", num4, atoi(num4));
-		printf("Over long int 'fails'\n");
+		printf("Libc: over long int\n");
 		printf("%s = %i\n", num5, atoi(num5));
 	}
 	

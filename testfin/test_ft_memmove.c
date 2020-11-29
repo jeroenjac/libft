@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/25 14:07:31 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/27 11:35:44 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/29 23:15:15 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int		main(int argc, char **argv)
 	printf("%s\n", rp1);
 	
 	//Test 2: len > src.
+	//ASAN issue
 	char	src2[30] = "Source";
 	char	dst2[300] = "New testing strat";
 	char	*rp2;

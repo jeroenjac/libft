@@ -6,7 +6,7 @@
 /*   By: jjacobs <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/26 18:40:05 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/27 11:40:08 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/29 23:15:36 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int		main(int argc, char **argv)
 		printf("After: %s\n", str0);
 	
 	//Special case where last char of string is set to not \0,
+	//ASAN issue
 	char	str1[6] = "hallo";
 	
 	c = 'k' + 256;

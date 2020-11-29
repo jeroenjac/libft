@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/15 23:43:25 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/27 11:45:56 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/29 23:09:24 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int		main(int argc, char **argv)
 	}
 
 	//t2 - test on string that is not terminated;
+	//ASAN ISSUE
 	char	str2[14] = "Hello12345abc";
 	str2[13] = 'd';
 	

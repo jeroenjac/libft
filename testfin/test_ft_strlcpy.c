@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/17 13:09:38 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/27 11:44:58 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/29 23:08:05 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ int		main(int argc, char **argv)
 */
 
 	//Test 5: size of src too small for \0
+	//ASAN ISSUE
 	char	dst5[30] = "5 codam campus";
 	char	src5[4] = "5nok";
 	len = 10;

@@ -147,6 +147,10 @@ gcc -Wall -Werror -Wextra ../libft.a test_ft_calloc.c
 ./a.out 1 > libft
 ./a.out > libc
 diff libc libft >> results_all_tests
+echo '##### calloc test failing #####'
+./a.out 1 1 1 1
+echo '##### ft_calloc test failing #####'
+./a.out 1 1 1 1 1
 
 echo 'TESTING FT_STRDUP'
 gcc -Wall -Werror -Wextra ../libft.a test_ft_strdup.c
@@ -171,7 +175,7 @@ gcc -Wall -Werror -Wextra ../libft.a test_ft_strtrim.c
 echo 'TESTING FT_SPLIT'
 gcc -Wall -Werror -Wextra ../libft.a test_ft_split.c
 ./a.out 1 1 1
-echo 'THIS TEST (s = NULL) DOES COMPILE & RUNS w/o ASAN -> seg fault'
+echo '##### THIS TEST (s = NULL) DOES COMPILE & RUNS w/o ASAN -> seg fault'
 ./a.out 1 2 3 4 5
 
 echo 'TESTING FT_ITOA'

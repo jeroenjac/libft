@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/13 13:24:39 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/27 11:27:31 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/29 22:50:44 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,21 @@ int     main(int argc, char **argv)
     printf("prog: %s\n", argv[0]);
     ft = inittest(argc, "ft_calloc");
 
-    //Section 1: Simple test: reserve for 10 * int?
 	size_t			c1;
 	size_t			s1;
 	int				*rp1;
 	int				*rp2;
+	
+    //Section 1: Simple test: reserve for 10 * int?
+	if (ft < 2)
+	{
 	unsigned int	i;
-	unsigned int	imax;
+	unsigned int	imax = 0;
 
 	c1 = 10;
 	s1 = sizeof(int);
-	printf("Calloc test (c1 = %zu, s1 = %zu)\n", c1, s1);
+	if (ft < 2)
+		printf("Calloc test (c1 = %zu, s1 = %zu)\n", c1, s1);
 	if (ft == 0)
 		rp1 = (int*)calloc(c1, s1);
 	if (ft == 1)
@@ -60,7 +64,7 @@ int     main(int argc, char **argv)
 	i = 0;
 	while (i < imax)
 	{
-		printf ("%d ", rp2[i]);
+	printf ("%d ", rp2[i]);
 		i++;
 	}
 	*/
@@ -68,7 +72,7 @@ int     main(int argc, char **argv)
 	
 	free (rp1);
 	free (rp2);
-
+	
 	//Section 2: Test with x chars
 	char			*rp3;
 	char			*rp4;
@@ -174,7 +178,7 @@ int     main(int argc, char **argv)
 	
 	free(rp1);
 	free(rp2);
-	
+	}
 	//Section 6: Test for malloc fail
 	c1 = 1;
 	s1 = -1; // Likely always leads to fail?
