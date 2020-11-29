@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/13 13:24:39 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/15 20:54:58 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/27 11:27:31 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ int     main(int argc, char **argv)
 		printf ("%02X ", rp3[i]);
 		i++;
 	}
+	printf("\n");
 	/*
 	printf("\nData malloc (hex): ");
 	i = 0;
@@ -177,17 +178,21 @@ int     main(int argc, char **argv)
 	//Section 6: Test for malloc fail
 	c1 = 1;
 	s1 = -1; // Likely always leads to fail?
-	printf("Calloc test (c1 = %zu, s1 = %zu)\n", c1, s1);
-	if (ft == 0)
+	if (ft == 4 || ft == 5)
+		printf("Calloc test (c1 = %zu, s1 = %zu)\n", c1, s1);
+	if (ft == 4)
 		rp1 = calloc(c1, s1);
-	if (ft == 1)
+	if (ft == 5)
 		rp1 = ft_calloc(c1, s1);
 	if (rp1 == NULL)
 		printf("Calloc failed\n");
-	rp2 = malloc(c1 * s1);
+	if (ft == 4 || ft == 5)
+		rp2 = malloc(c1 * s1);
 	if (rp2 == NULL)
 		printf("Malloc failed\n");
 	
-	free(rp1);
-	free(rp2);
+	if (ft == 4 || ft == 5)
+		free(rp1);
+	if (ft == 4 || ft == 5)
+		free(rp2);
 }

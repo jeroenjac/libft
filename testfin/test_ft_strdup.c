@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/15 21:10:44 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/17 12:50:00 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/27 11:42:04 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@
 #include <stdlib.h>
 #include "../libft.h"
 
-//Is this needed?
 int		inittest(int argc, char *ftname);
-
 
 int		main(int argc, char **argv)
 {

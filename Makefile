@@ -6,7 +6,7 @@
 #    By: jjacobs <jjacobs@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/03 11:48:52 by jjacobs       #+#    #+#                  #
-#    Updated: 2020/11/25 12:06:39 by jjacobs       ########   odam.nl          #
+#    Updated: 2020/11/29 18:11:58 by jjacobs       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,26 +44,27 @@ SRC = ./ft_memset.c \
 	  ./ft_putstr_fd.c \
 	  ./ft_putendl_fd.c \
 	  ./ft_putnbr_fd.c \
-	  ./ft_strndup.c \
+	  ./ft_strndup.c
 
-OBJ = $(SRC:.c=.o)
-BUILDDIR = obj
-
-CFLAGS = -Wall -Wextra -Werror
 NAME = libft.a
+OBJ_FILES = $(SRC:.c=.o)
+HEADER_FILES = libft.h
+CFLAGS = -Wall -Wextra -Werror
 
 all:	$(NAME)
 
-$(NAME): $(SRC)
-	gcc $(CFLAGS) -c $(SRC)
-	ar -vr $(NAME) $(OBJ)
+$(NAME): $(OBJ_FILES)
+	ar -vr $@ $^
+
+%.o: %.c $(HEADER_FILES)
+	$(CC) -c $(CFLAGS) -o $@ $<
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ_FILES)
 
 fclean:	clean
 	rm -f $(NAME)
 
 re:		fclean all
 
-.PHONY: clean all
+.PHONY: all clean fclean re
