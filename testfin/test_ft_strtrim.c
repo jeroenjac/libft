@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/17 12:54:05 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/30 14:16:15 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/30 21:07:43 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 #include "inittest.c"
 
 #include "../libft.h"
+
+/*
+ * TESTING MODES
+ * 1. Simple / explicit
+ * 3. Compare (incl. set = NULL)
+ * 5. Error Break with s = NULL
+*/
 
 void	testtrim(char *in, char *set, char *out);
 
@@ -76,8 +83,8 @@ int		main(int argc, char **argv)
 		testtrim("qqqaaab",	"ab",		"qqq");
 		testtrim("baqqqa",	"a\0b",		"baqqq");
 		testtrim("abc1234",	"abc",		"1234");
-		testtrim("abc",		NULL,		"abc"); //error?
-		testtrim("   ",		" ",		""); //error?
+		testtrim("abc",		NULL,		"abc");
+		testtrim("   ",		" ",		""); //sometimes error/abort with warmachine.
 		testtrim("abbaabba",	"ab",	"");	
 	}
 	if (ft == 5)	
