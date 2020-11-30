@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/17 12:54:05 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/27 11:48:30 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/30 14:16:15 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		main(int argc, char **argv)
 		char	c = 'a';
 
 		printf("result strchr = %s\n", ft_strchr("ab", (int)c));
-		direct = ft_strtrim("abCOCOab", "ab");
+		direct = ft_strtrim("        ", " ");
 		printf("direct: %s\n", direct);
 	
 		char	s1[] = "abbabbba";
@@ -77,6 +77,8 @@ int		main(int argc, char **argv)
 		testtrim("baqqqa",	"a\0b",		"baqqq");
 		testtrim("abc1234",	"abc",		"1234");
 		testtrim("abc",		NULL,		"abc"); //error?
+		testtrim("   ",		" ",		""); //error?
+		testtrim("abbaabba",	"ab",	"");	
 	}
 	if (ft == 5)	
 	{

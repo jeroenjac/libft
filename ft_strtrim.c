@@ -6,33 +6,36 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/17 07:27:59 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/26 18:35:02 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/30 14:26:55 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stddef.h>
+#include <string.h>
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*s;
-	size_t	n_before;
-	size_t	n_after;
+	size_t	trimb;
+	size_t	trime;
 	size_t	len;
 	size_t	len_trim;
 
 	if (s1 == NULL)
 		return (NULL);
 	s = (char*)s1;
-	n_before = 0;
+	trimb = 0;
 	if (set == NULL)
 		return (s);
-	while (ft_strchr((char *)set, *(s + n_before)) != NULL)
-		n_before++;
+	while (*(s + trimb) != '\0' && ft_strchr((char *)set, *(s + trimb)) != NULL)
+		trimb++;
 	len = ft_strlen(s);
-	n_after = 0;
-	while (ft_strchr((char *)set, *(s + len - n_after)) != NULL)
-		n_after++;
-	len_trim = len - n_before - n_after;
-	return (ft_substr(s, n_before, len_trim + 1));
+	if (trimb == len)
+		return ("");
+	trime = 0;
+	while (trime < len && ft_strchr((char *)set, *(s + len - trime)) != NULL)
+		trime++;
+	len_trim = len - trimb - trime;
+	return (ft_substr(s, trimb, len_trim + 1));
 }

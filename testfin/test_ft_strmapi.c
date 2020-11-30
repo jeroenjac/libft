@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/21 23:40:22 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/26 18:39:30 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/30 15:51:10 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 
 //Test functions for strmapi
-char	caps(unsigned int	index, char c);
+char	caps(unsigned int index, char c);
 char	c3(unsigned int	index, char c);
 char	simple(unsigned int	index, char c);
 char	toocomplex(unsigned int	index, char c, char c2);
@@ -87,7 +87,7 @@ int		main(int argc, char **argv)
 }
 
 
-char	caps(unsigned int	index, char c)
+char	caps(unsigned int index, char c)
 {
 	if (index % 2 == 0)
 		return (ft_tolower(c));

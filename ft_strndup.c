@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/16 17:33:25 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/29 22:02:20 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/11/30 14:56:39 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strndup(char *s1, size_t n)
 {
 	char	*dup;
 
-	dup = malloc((n + 1) * sizeof(char));
+	dup = ft_calloc(n + 1, sizeof(char));
 	if (dup == NULL)
 		return (NULL);
 	ft_memcpy(dup, s1, n * sizeof(char));
