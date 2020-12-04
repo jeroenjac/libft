@@ -6,7 +6,7 @@
 #    By: jjacobs <jjacobs@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/03 11:48:52 by jjacobs       #+#    #+#                  #
-#    Updated: 2020/11/29 22:16:57 by jjacobs       ########   odam.nl          #
+#    Updated: 2020/12/04 18:46:15 by jjacobs       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,10 @@ SRC = ./ft_memset.c \
 
 SRC_EXTRA = ./ft_strndup.c
 	  
-SRC_BONUS =
+SRC_BONUS = ./ft_lstnew.c \
+			./ft_lstadd_front.c \
+			./ft_lstsize.c \
+			./ft_lstlast.c
 
 NAME = libft.a
 
@@ -79,7 +82,7 @@ bonus:
 	$(CC) -c $(CFLAGS) -o $@ $<
 
 clean:
-	rm -f $(OBJ_FILES)
+	rm -f $(OBJ_FILES_REG) $(OBJ_FILES_EXTRA) $(OBJ_FILES_BONUS)
 
 fclean:	clean
 	rm -f $(NAME)

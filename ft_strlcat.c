@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/10 18:33:10 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/30 22:36:28 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/12/03 15:13:00 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,19 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t	i;
-	size_t	lens;
-	size_t	lend;
+	size_t	src_len;
+	size_t	dst_len;
 
-	lens = ft_strlen(src);
-	lend = ft_strlen(dst);
-	if (dstsize <= lend)
-		return (lens + dstsize);
-	i = 0;
-	while (i < lens && i < dstsize - lend - 1)
-	{
-		*(dst + lend + i) = *(src + i);
-		i++;
-	}
-	*(dst + lend + i) = '\0';
-	return (lens + lend);
+	src_len = ft_strlen(src);
+	dst_len = ft_strlen(dst);
+	if (dstsize <= dst_len)
+		return (dstsize + src_len);
+	ft_strlcpy(dst + dst_len, src, dstsize - dst_len);
+	return (dst_len + src_len);
 }
+
+/*
+** General remark: if I code based on the man page, this is hard to follow.
+** (meaninig: strlcat behaves different than is described in the man)
+** Therefore I reverse engineered the strlcat behavior using my testscript.
+*/
