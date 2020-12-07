@@ -6,12 +6,11 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/16 14:10:06 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/26 15:28:13 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/12/07 10:55:05 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
-#include <stdlib.h>
 #include "libft.h"
 
 char	*ft_substr(char const *s1, unsigned int start, size_t len)

@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/20 16:46:57 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/21 15:49:23 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/12/07 10:17:47 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char		*ft_itoa(int n)
 	nl = n;
 	len = digits(nl);
 	negative = 0;
-	word = (char*)malloc((len + 1) * sizeof(char));
+	word = (char *)malloc((len + 1) * sizeof(char));
 	if (word == NULL)
 		return (NULL);
 	word[len] = '\0';
