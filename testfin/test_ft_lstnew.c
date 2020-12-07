@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_substr.c                                        :+:    :+:            */
+/*   test_ft_lstnew.c                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/16 14:10:06 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/12/07 10:55:05 by jjacobs       ########   odam.nl         */
+/*   Created: 2020/12/03 15:27:27 by jjacobs       #+#    #+#                 */
+/*   Updated: 2020/12/03 15:47:22 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include "libft.h"
+#include "inittest.c"
+#include "../libft.h"
+#include <string.h>
 
-char	*ft_substr(char const *s1, unsigned int start, size_t len)
+int		main(int argc, char **argv)
 {
-	size_t	s1_left;
+	int		ft;
 
-	if (s1 == NULL)
-		return (NULL);
-	s1_left = ft_strlen(s1);
-	if (s1_left <= start)
-		return (ft_strdup(""));
-	s1_left = s1_left - start;
-	if (s1_left < len)
-		len = s1_left;
-	return (ft_strndup((char *)s1 + start, len));
+	printf("prog: %s\n", argv[0]);
+	ft = inittest(argc, "ft_lstnew");
+
+	if (ft == 3)
+	{
+		t_list	*test1;
+		char	*testcontent;
+		
+		testcontent = strdup("Hello");
+
+		test1 = ft_lstnew(testcontent);
+		printf("list el 1: %s", test1->content);
+		//printf("list el 2: %s", test1->next);
+		
+	}
 }

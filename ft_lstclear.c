@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_substr.c                                        :+:    :+:            */
+/*   ft_lstclear.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/16 14:10:06 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/12/07 10:55:05 by jjacobs       ########   odam.nl         */
+/*   Created: 2020/12/06 22:39:28 by jjacobs       #+#    #+#                 */
+/*   Updated: 2020/12/06 23:33:50 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
 #include "libft.h"
 
-char	*ft_substr(char const *s1, unsigned int start, size_t len)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	size_t	s1_left;
+	t_list	*nextdel;
 
-	if (s1 == NULL)
-		return (NULL);
-	s1_left = ft_strlen(s1);
-	if (s1_left <= start)
-		return (ft_strdup(""));
-	s1_left = s1_left - start;
-	if (s1_left < len)
-		len = s1_left;
-	return (ft_strndup((char *)s1 + start, len));
+	if (lst == NULL || del == NULL)
+		return ;
+	while (*lst != NULL)
+	{
+		nextdel = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = nextdel;
+	}
 }

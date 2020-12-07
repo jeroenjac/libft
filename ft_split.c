@@ -6,14 +6,12 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/17 16:28:19 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/27 09:22:31 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/12/02 19:19:27 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
-#include <stdio.h>
-#include <string.h>
 
 /*
 ** Function to free all memory, only used if some string allocation fails.

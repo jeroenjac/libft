@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_substr.c                                        :+:    :+:            */
+/*   ft_lstsize.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/16 14:10:06 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/12/07 10:55:05 by jjacobs       ########   odam.nl         */
+/*   Created: 2020/12/04 16:05:57 by jjacobs       #+#    #+#                 */
+/*   Updated: 2020/12/07 10:48:33 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
 #include "libft.h"
 
-char	*ft_substr(char const *s1, unsigned int start, size_t len)
+int		ft_lstsize(t_list *lst)
 {
-	size_t	s1_left;
+	int size;
 
-	if (s1 == NULL)
-		return (NULL);
-	s1_left = ft_strlen(s1);
-	if (s1_left <= start)
-		return (ft_strdup(""));
-	s1_left = s1_left - start;
-	if (s1_left < len)
-		len = s1_left;
-	return (ft_strndup((char *)s1 + start, len));
+	if (lst == NULL)
+		return (0);
+	size = 1;
+	if (lst->next != NULL)
+		size = size + ft_lstsize(lst->next);
+	return (size);
 }
