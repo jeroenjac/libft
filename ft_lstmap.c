@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/06 23:41:10 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/12/07 01:05:28 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/12/07 01:13:19 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,13 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 ** Method re-uses other created lst_functions.
 ** Also, it leaves the pointer to the initial element (e.g. 'lst') unchanged.
 ** (I would have to show this in a test, still)
+**
 ** What's not clear for me at this moment. Wouldn't this also work by;
 **	declaring **ret (instead of *ret); because it's also arg for add_back/clear
 **	initializing *ret & ret = NULL
 **	updating '&ret' to 'ret' in below code
 **	returning (*ret, e.g. 1x dereference) instead of ret
+**
+** It seems this should also work, but the unit tester do not accept it?
+** (do need to add my own tests here...)
 */
