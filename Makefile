@@ -6,7 +6,7 @@
 #    By: jjacobs <jjacobs@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/03 11:48:52 by jjacobs       #+#    #+#                  #
-#    Updated: 2020/12/04 18:46:15 by jjacobs       ########   odam.nl          #
+#    Updated: 2020/12/06 23:45:16 by jjacobs       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,19 +44,24 @@ SRC = ./ft_memset.c \
 	  ./ft_putstr_fd.c \
 	  ./ft_putendl_fd.c \
 	  ./ft_putnbr_fd.c
-
-SRC_EXTRA = ./ft_strndup.c
-	  
+ 
 SRC_BONUS = ./ft_lstnew.c \
 			./ft_lstadd_front.c \
 			./ft_lstsize.c \
-			./ft_lstlast.c
+			./ft_lstlast.c \
+			./ft_lstadd_back.c \
+			./ft_lstdelone.c \
+			./ft_lstclear.c \
+			./ft_lstiter.c \
+			./ft_lstmap.c
+
+SRC_EXTRA = ./ft_strndup.c
 
 NAME = libft.a
 
 OBJ_FILES_REG = $(SRC:.c=.o)
-OBJ_FILES_EXTRA = $(SRC_EXTRA:.c=.o)
 OBJ_FILES_BONUS = $(SRC_BONUS:.c=.o)
+OBJ_FILES_EXTRA = $(SRC_EXTRA:.c=.o)
 
 HEADER_FILES = libft.h
 CFLAGS = -Wall -Wextra -Werror
