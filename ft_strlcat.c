@@ -6,11 +6,10 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/10 18:33:10 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/12/03 15:13:00 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/12/14 16:52:50 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
 #include "libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)

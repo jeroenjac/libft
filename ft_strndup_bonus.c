@@ -6,12 +6,11 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/16 17:33:25 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/30 14:56:39 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/12/14 15:25:40 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 char	*ft_strndup(char *s1, size_t n)
 {

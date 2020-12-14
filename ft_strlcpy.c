@@ -6,11 +6,10 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/10 15:05:59 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/26 13:56:51 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/12/14 15:25:13 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
 #include "libft.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t ldst)

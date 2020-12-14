@@ -6,11 +6,10 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 10:08:23 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/12/07 17:55:30 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/12/14 15:25:56 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
 #include "libft.h"
 
 char	*ft_strnstr(const char *hs, const char *nd, size_t len_s)

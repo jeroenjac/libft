@@ -6,7 +6,7 @@
 #    By: jjacobs <jjacobs@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/03 11:48:52 by jjacobs       #+#    #+#                  #
-#    Updated: 2020/12/06 23:45:16 by jjacobs       ########   odam.nl          #
+#    Updated: 2020/12/14 15:05:07 by jjacobs       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ SRC = ./ft_memset.c \
 	  ./ft_putstr_fd.c \
 	  ./ft_putendl_fd.c \
 	  ./ft_putnbr_fd.c
- 
+
 SRC_BONUS = ./ft_lstnew.c \
 			./ft_lstadd_front.c \
 			./ft_lstsize.c \
@@ -55,7 +55,7 @@ SRC_BONUS = ./ft_lstnew.c \
 			./ft_lstiter.c \
 			./ft_lstmap.c
 
-SRC_EXTRA = ./ft_strndup.c
+SRC_EXTRA = ./ft_strndup_bonus.c
 
 NAME = libft.a
 
@@ -78,7 +78,7 @@ $(NAME): $(OBJ_FILES)
 	ar -vr $@ $^
 
 # flags used: -v for extra output, -r for replace files in arch.
-# -c can be used to supress archive creating message. Not needed. 
+# -c can be used to supress archive creating message. Not needed.
 
 bonus:
 	$(MAKE) WITH_BONUS=1 all

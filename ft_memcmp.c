@@ -6,7 +6,7 @@
 /*   By: jjacobs <marvin@codam.nl>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/09 22:22:24 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/12 21:38:27 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/12/14 15:01:45 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n)
 
 	c1 = (unsigned char*)s1;
 	c2 = (unsigned char*)s2;
-	while (n-- > 0)
+	while (n > 0)
 	{
+		n--;
 		if (*c1 != *c2)
 			return (*c1 - *c2);
 		c1++;

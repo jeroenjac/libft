@@ -6,30 +6,12 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/24 16:57:43 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/30 14:40:25 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/12/14 15:27:19 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <limits.h>
-
-/*
-** For discussion, (why) would first attempt (commented below) be wrong?
-** It allocates mem, but also frees it.
-*/
-
-/*
-** #include <stdlib.h>
-**
-** void			ft_putnbr_fd2(int n, int fd)
-** {
-**	char	*num;
-**
-**	num = ft_itoa(n);
-**	ft_putstr_fd(num, fd);
-**	free(num);
-** }
-*/
 
 void			ft_putnbr_fd(int n, int fd)
 {

@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/11 17:03:14 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/11/20 13:12:53 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/12/14 16:49:52 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,17 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	char	cr;
+	char	lookfor;
 
-	cr = (char)c;
-	while (*s != '\0' && *s != cr)
+	lookfor = (char)c;
+	while (*s != '\0' && *s != lookfor)
 		s++;
-	if (*s == cr)
+	if (*s == lookfor)
 		return ((char*)s);
 	else
 		return (NULL);
 }
+
+/*
+** Casting c to char needed to work for INT_MIN
+*/

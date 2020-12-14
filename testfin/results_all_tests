@@ -49,9 +49,11 @@ all test results (output diff files)
 ---
 > Testing/mode = 1: ft_strlcpy
 > TESTING LIBFT FUNCTION
-2c2
+2,3c2,3
+< Testing/mode = 0: ft_strlcat
 < TESTING LIBC FUNCTION
 ---
+> Testing/mode = 1: ft_strlcat
 > TESTING LIBFT FUNCTION
 2,3c2,3
 < Testing/mode = 0: ft_strchr
@@ -75,12 +77,6 @@ all test results (output diff files)
 ---
 > Testing/mode = 1: ft_atoi
 > TESTING LIBFT FUNCTION
-29,30c29,30
-< Libc: over long int
-< 9223372036854775807444 = -1
----
-> Libft: over long int, different result
-> 9223372036854775807444 = -556
 2c2
 < TESTING LIBC FUNCTION
 ---

@@ -6,11 +6,11 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/20 16:46:57 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/12/07 10:17:47 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/12/14 15:45:27 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 static int	digits(long nl)
 {
@@ -42,10 +42,9 @@ char		*ft_itoa(int n)
 	nl = n;
 	len = digits(nl);
 	negative = 0;
-	word = (char *)malloc((len + 1) * sizeof(char));
+	word = (char *)ft_calloc((len + 1), sizeof(char));
 	if (word == NULL)
 		return (NULL);
-	word[len] = '\0';
 	if (nl < 0)
 	{
 		negative = 1;

@@ -6,7 +6,7 @@
 /*   By: jjacobs <jjacobs@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/17 16:28:19 by jjacobs       #+#    #+#                 */
-/*   Updated: 2020/12/02 19:19:27 by jjacobs       ########   odam.nl         */
+/*   Updated: 2020/12/14 16:40:49 by jjacobs       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,77 +17,86 @@
 ** Function to free all memory, only used if some string allocation fails.
 */
 
-static	void	free_strings(char **ret, size_t n)
+static	void	free_strings(char **strings, size_t n)
 {
 	while (n > 0)
 	{
 		n--;
-		free(*(ret + n));
+		free(strings[n]);
 	}
-	free(ret);
+	free(strings);
 }
+
+/*
+** Function counts the number of 'words' in the given string s
+** Method
+** - Pointer is moved along s, one char by one.
+** - Pointer to last delimeter is stored
+** - When a (new) delimeter char is found in s:
+**		- check if prevdelim  > 1 away (e.g. dddcddd) -> word in between ('c')
+** - Else, continue to next char
+*/
 
 static	size_t	count_strings(char *s, char d)
 {
-	size_t	strings;
-	char	*sep0;
+	size_t	wordcount;
+	char	*prevdelim;
 
-	sep0 = s - 1;
-	strings = 0;
+	prevdelim = s - 1;
+	wordcount = 0;
 	while (1)
 	{
 		if (*s == d || *s == '\0')
 		{
-			if (s - sep0 > 1)
-				strings++;
+			if (s - prevdelim > 1)
+				wordcount++;
 			if (*s == '\0')
-				return (strings);
-			sep0 = s;
+				return (wordcount);
+			prevdelim = s;
 		}
 		s++;
 	}
-	return (strings);
 }
 
-static int		cpy_strings(char *s, size_t n, char d, char **ret)
+static int		copytostrings(char *s, size_t n, char d, char **strings)
 {
-	size_t	i;
-	char	*s_end;
+	size_t	w;
+	char	*nextdelim;
 
-	s_end = s;
-	i = 0;
-	while (i < n)
+	nextdelim = s;
+	w = 0;
+	while (w < n)
 	{
 		while (*s == d)
 			s++;
-		s_end = ft_strchr(s, d);
-		if (i + 1 == n && s_end == NULL)
-			s_end = s + ft_strlen(s);
-		*(ret + i) = ft_strndup(s, s_end - s);
-		if (*(ret + i) == NULL)
+		nextdelim = ft_strchr(s, d);
+		if (w + 1 == n && nextdelim == NULL)
+			nextdelim = s + ft_strlen(s);
+		strings[w] = ft_strndup(s, nextdelim - s);
+		if (strings[w] == NULL)
 		{
-			free_strings(ret, i);
+			free_strings(strings, w);
 			return (0);
 		}
-		s = s_end;
-		i++;
+		s = nextdelim;
+		w++;
 	}
-	*(ret + n) = NULL;
+	strings[n] = NULL;
 	return (1);
 }
 
 char			**ft_split(char const *s, char c)
 {
 	char	**result;
-	size_t	n_strings;
+	size_t	numofstrings;
 
 	if (s == NULL)
 		return (NULL);
-	n_strings = count_strings((char*)s, c);
-	result = malloc((n_strings + 1) * sizeof(char*));
+	numofstrings = count_strings((char*)s, c);
+	result = ft_calloc((numofstrings + 1), sizeof(char*));
 	if (result == NULL)
 		return (NULL);
-	if (cpy_strings((char*)s, n_strings, c, result) == 0)
+	if (copytostrings((char*)s, numofstrings, c, result) == 0)
 		return (NULL);
 	return (result);
 }
